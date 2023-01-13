@@ -1,56 +1,66 @@
-// let name = 'Jack';
-// console.log(name);
-// name = 'Jane';
-// console.log(name);
-// let color;
-// console.log(color);
-// color = 'red';
-// console.log(color);
+// let x = 'something';
+// console.log(x);
+//  x = 3;
+// console.log(x);
+
+// Primitive data types
+
+// String
+
+const someText = 'Some text';
+console.log(typeof someText);
+
+// Number
+
+const someNumber = 11;
+console.log(typeof someNumber);
+
+// Boolean
+
+const someBoolean = false;
+console.log(typeof someBoolean);
+
+// Null
+
+const someNull= null;
+console.log(typeof someNull);
+
+// Undefined
+
+let someUndefined;
+console.log(typeof someUndefined);
+
+// Symbol
+
+const someSymbol = Symbol();
+console.log(typeof someSymbol);
 
 
-/* JavaScript variables names can include
-letters, numbers, $, _ 
 
-JavaScript variables names can't start with number
-*/
+// Reference data types
+
+// Array
+
+const someArray = [1, 2, 3, 4];
+console.log(typeof someArray);
+
+// Object Literal
+
+const someObjectLiteral = {
+    firstProperty : '12',
+    secondProperty: 'some',
+
+};
+console.log(typeof someObjectLiteral);
+
+// Function
+
+const someFunction = new Function();
+console.log(typeof someFunction);
+
+// Date
+
+const someDate = new Date();
+console.log(typeof someDate);
 
 
-// $color = 'green';
-// _color = 'orange';
-
-// myMainColor = 'black' //camel case
-// my_main_color // snake case
-// my-main-color // kebab case
-// MyMainCase // Pascal case
-
-
-const name = 'Jack';
-console.log(name);
-// name = 'Kail';
-
-const color =  'red';
-console.log(color);
-
-const user = {
-    name: 'Jack',
-    gender: 'male',
-    age: 24,
-}
-
-console.log(user);
-
-user.name = 'Jane';
-
-console.log(user);
-
-// user = {
-//     name: 'Jane', // Wrong
-//     gender: 'male',
-//     age: 24,
-// }
-
-const colors = ['red', 'yellow', 'orange', 'green']
-console.log(colors)
-
-colors.push('blue')
-console.log(colors)
