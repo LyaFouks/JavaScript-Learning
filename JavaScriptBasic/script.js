@@ -45,8 +45,8 @@ const a = "5";
 const b = "3";
 const c = a + b;
 
-console.log(z);
-console.log(typeof z);
+console.log(c);
+console.log(typeof c);
 
 const d = "5";
 const s = "3";
