@@ -1,30 +1,88 @@
-const firstNumber = 50;
-const secondNumber = 10;
-let = result;
+let result;
+const firstName = 'Jack';
+const lastName = 'Brown';
+const space = ' ';
+const age = 25;
+const greeting = 'Hey there!';
 
 
-// Simple math operation
+// Concatanation
 
-result = firstNumber + secondNumber;
-result = firstNumber - secondNumber;
-result = firstNumber * secondNumber;
-result = firstNumber / secondNumber;
-result = firstNumber % secondNumber;
+result = firstName + space + lastName;
+
+result = greeting + space + 'My name is' + space + firstName + ' ' + lastName + ". I'am " + age + ' years old.';
 
 
-// Math object
+// Escaping
 
-result = Math.PI;
-result = Math.round(3.4);
-result = Math.ceil(3.3);
-result = Math.floor(3.8);
-result = Math.sqrt(9);
-result = Math.abs(-7);
-result = Math.pow(2, 3);
-result = Math.min(3, 45, 22, 151, 11, -67);
-result = Math.max(3, 45, 22, 151, 11, -67);
-result = Math.random();
-result = Math.floor(Math.random() * 100);
+result = 'I\'m 34 years old';
+result = "I like \"Star wars\" movie.";
+
+
+// Properties and methods
+
+result = 'Hello!'.length;
+result = firstName.length;
+
+
+// Concat
+
+result = firstName.concat(' ', lastName);
+result = greeting.concat(space, 'My name is ', firstName, space, lastName);
+
+
+// toUpperCase() / toLowerCase()
+
+result = result.toUpperCase();
+result = result.toLowerCase();
+
+
+// indexOf()
+
+result = firstName[2];
+
+result = 'Hello'.indexOf('l');
+result = 'Hello lol'.lastIndexOf('l');
+result = firstName.indexOf('a');
+result = 'Hello lol'.lastIndexOf('lo');
+result = firstName.indexOf('z');
+
+
+// charAt()
+
+result = firstName.charAt(1);
+
+const longString = 'Hi, I\'am a long string';
+
+result = longString.charAt(longString.length -1);
+
+
+// substring()
+
+result = greeting.substring(4, 9);
+
+
+// slice()
+
+result = greeting.slice(4, 9);
+result = greeting.slice(-5);
+
+
+// split()
+
+result = longString.split(' ');
+const colors = 'red, orange, green, blue,';
+result = colors.split(',');
+
+
+// replace()
+
+result = colors.replace('blue', 'yellow');
+
+
+// includes()
+
+result = colors.includes('blue');
 
 
 
