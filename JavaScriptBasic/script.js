@@ -1,9 +1,11 @@
-let userName = prompt('What is your first name?', '');
+const x = 3;
+const y = 10;
+let isXMoreThanY = x > y;
 
-let userLastName = prompt('What is your last name?', '');
+console.log(isXMoreThanY);
 
-let userAge = prompt('What is your age?', '');
+let isXMoreThanY2 = x <= y;
 
-const greeting = 'Hi there, ' + userName + ' ' + userLastName + '. ' + 'You\'re ' + userAge + ' years old.';
+console.log(isXMoreThanY2);
 
-alert(greeting);
+
