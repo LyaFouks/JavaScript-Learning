@@ -1,11 +1,12 @@
-const x = 3;
-const y = 10;
-let isXMoreThanY = x > y;
+// const x = (2 + 10) / 2;
+// console.log(x);
 
-console.log(isXMoreThanY);
-
-let isXMoreThanY2 = x <= y;
-
-console.log(isXMoreThanY2);
+// const y = 10 - x > 10;
+// console.log(y);
 
 
+let x, y;
+console.log(x, y);
+
+x = y = 10 + 5 - 3 * 4;
+console.log(x, y);
