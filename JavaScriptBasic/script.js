@@ -1,12 +1,15 @@
-// const x = (2 + 10) / 2;
-// console.log(x);
+let x = 5;
+let y = 3;
+// x += 5;
+// x -= 2;
+// x *= 3;
+// x /= 2;
 
-// const y = 10 - x > 10;
-// console.log(y);
+// x++;
+// x--;
+// x--;
 
+y = x++; // Сначала идет присвоение "y" значение "x", а затем увеличение "x" на единицу.
 
-let x, y;
-console.log(x, y);
-
-x = y = 10 + 5 - 3 * 4;
-console.log(x, y);
+console.log(x);
+console.log(y);
