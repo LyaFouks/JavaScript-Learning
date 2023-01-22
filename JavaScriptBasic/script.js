@@ -1,46 +1,51 @@
-// AND, OR, NOT
+const color = 'blue';
 
-// AND &&
-// console.log(true && true); //true
-// console.log(true && false); //false
-// console.log(false && false); // false
+//  if(color === 'green') {
+//     console.log('Go!')
+//  } else if(color === 'yellow') {
+//     console.log('Ready!')
+//  } else if(color === 'red') {
+//     console.log('Stop!')
+//  } else {
+//    console.log('Incorrect color!')
+//  }
 
-// OR ||
-// console.log(true || true); //true
-// console.log(true || false); //true
-// console.log(false || false); //false
-
-// NOT !
-// console.log(!true); //false
-// console.log(!false); //true
-
-
-// const hasMoney = true;
-// const isAdult = false;
-
-// if(hasMoney && isAdult) {
-//    console.log('You can buy the drink.');
-// } else {
-//    console.log('You can not buy the drink.');
+//  switch(color) {
+//    case 'green':
+//       console.log('Go!');
+//       break;
+//    case 'yellow':
+//       console.log('Get Ready!');
+//       break;
+//    case 'red':
+//       console.log('Stop!');
+//       break;
+//    default:
+//       console.log('Incorrect color!');
 // }
 
+const weekDay = 'monday';
 
-// const hasMoney = false;
-// const withParent = false;
-
-// if(hasMoney || withParent) {
-//    console.log('You can buy the orange.');
-// } else {
-//    console.log('You can not buy the orange.');
-// }
-
-
-const hasMoney = true;
-const isAdult = true;
-const isCompletelyDrunk = true;
-
-if(hasMoney && isAdult && !isCompletelyDrunk) {
-   console.log('You can buy the drink.');
-} else {
-   console.log('You can not buy the drink.');
+switch(weekDay) {
+   case 'monday':
+      console.log('Keep calm and pretend it\'s only Monday!');
+      break;
+   case 'tuesday':
+         console.log('Keep calm and pretend it\'s only Tuesday!');
+         break;
+   case 'wednesday':
+         console.log('Keep calm and pretend it\'s only Wednesday!');
+         break;
+   case 'thursday':
+         console.log('Keep calm and pretend it\'s only Thursday!');
+         break;
+   case 'friday':
+         console.log('Keep calm and pretend it\'s only Friday!');
+         break;
+   case 'saturday':
+   case 'sunday':
+         console.log('Keep calm and pretend it\'s only Weekend!');
+         break;
+   default:
+         console.log("This is not a weekday i know!")
 }
