@@ -1,44 +1,29 @@
-// const age = 20;
-// const isAdult = age >= 18;
+// JavaScript falsy values:
+// 0, '', undefined, null, NaN
+// console.log(Boolean(0));
+// console.log(Boolean(''));
+// console.log(Boolean(undefined));
+// console.log(Boolean(null));
+// console.log(Boolean(NaN));
 
-// if(isAdult) {
-//     console.log('You can watch this video');
-// }
+console.log(Boolean(32));
+console.log(Boolean('hello'));
+console.log(Boolean({}));
+console.log(Boolean([]));
+console.log(Boolean(3.5));
 
-// const age = 16;
+const age = 0;
 
-// if(age >= 18) {
-//     console.log('You can watch this video');
-// } else {
-//     // console.log('You can not watch this video');
-//     const yearsLeft = 18 - age;
-//     console.log(`You are too young.You can watch this video ${yearsLeft} years later.`);
-// }
+if(age) {
+   console.log('The person was born.');
+} else {
+   console.log('The person was not born yet.');
+}
 
+let weight;
 
-// const birthYear = 2000;
-// const yearNow = 2023;
-// const age = yearNow - birthYear;
-
-// let answer;
-
-// if(age >= 16) {
-//     answer = 'Yes'
-//  } else {
-//     answer = 'No'
-//  }
-
-//  console.log(`Am I adult? - ${answer}`)
-
-
-const color = 'yellow';
-
- if(color === 'green') {
-    console.log('Go!')
- } else if(color === 'yellow') {
-    console.log('Ready!')
- } else if(color === 'red') {
-    console.log('Stop!')
- } else {
-   console.log('Incorrect color!')
- }
+if(weight) {
+   console.log('Weight is defined.');
+} else {
+   console.log('Weight is not defined.');
+}
