@@ -1,11 +1,27 @@
+// Don't Repeat yourself ||  DRY
+
 'use strict';
 
-let hasCertificate = false;
-const passExam = true;
+// function printText() {
+//    console.log('Hello to everyone!');
+// }
+
+// printText(111);
+// printText();
+// printText();
+// printText();
+// printText();
+
+function colorizer(item, color, colorCode) {
+   // console.log(item, color);
+   const colorizedItem = `The ${item} is ${color}. The code of color is ${colorCode}`;
+   // console.log(colorizedItem);
+   return colorizedItem;
+}
 
 
-if(passExam) hasCertificate = true;
-if(hasCertificate) console.log('WoW!');
+const messageFromColorizer = colorizer('desk', 'red', 99);
+console.log(`We have the following message: ${messageFromColorizer}`);
 
-// const interface = 'Video';
-const package = 'MyPackage';
+const messageFromColorizer2 = colorizer('hand', 'green', 10);
+console.log(`We have the following message: ${messageFromColorizer2}`);
