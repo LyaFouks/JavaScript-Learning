@@ -1,21 +1,17 @@
-// Arrow Functions
-
-const getAge3 = (birthYear, yearNow) => 
-    yearNow - birthYear;
-
-const myAge3 = getAge3(1991, 2023);
-console.log(myAge3);
-
-
-
-const canBuySomeInteresting = (birthYear, yearNow) => {
-   const age =  yearNow - birthYear;
-   const isPerspnalOlderThan21 = 
-   age >=21 ? 
-   true : false;
-   return isPerspnalOlderThan21;
-
+function colorMixer(color1, color2) {
+   const newColor = `${color1} + ${color2}`;
+   return newColor;
 }
 
-console.log(canBuySomeInteresting(1991, 2023));
 
+
+function colorizer(item, color1, color2) {
+   const color = colorMixer(color1, color2);
+    const colorizedItem = `The ${item} is ${color}.`;
+     return colorizedItem;
+}
+
+const colorizedCar = colorizer('car', 'red', 'orange');
+console.log(colorizedCar);
+
+console.log(colorizer('house', 'white', 'black'));
