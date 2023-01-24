@@ -1,24 +1,21 @@
-// Declaration
+// Arrow Functions
+
+const getAge3 = (birthYear, yearNow) => 
+    yearNow - birthYear;
+
+const myAge3 = getAge3(1991, 2023);
+console.log(myAge3);
 
 
-const myAge1 = getAge1(1991, 2023);
-console.log(myAge1);
 
-function getAge1(birthYear, yearNow) {
-   // const age = yearNow - birthYear;
-   return yearNow - birthYear;
+const canBuySomeInteresting = (birthYear, yearNow) => {
+   const age =  yearNow - birthYear;
+   const isPerspnalOlderThan21 = 
+   age >=21 ? 
+   true : false;
+   return isPerspnalOlderThan21;
+
 }
 
-// const myAge1 = getAge1(1991, 2023);
-// console.log(myAge1);
-
-
-// Expresion
-
-const getAge2 = function(birthYear, yearNow) {
-      return yearNow - birthYear;
-}
-
-const myAge2 = getAge2(1991, 2023);
-console.log(myAge2);
+console.log(canBuySomeInteresting(1991, 2023));
 
