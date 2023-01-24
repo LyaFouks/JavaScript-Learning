@@ -1,27 +1,24 @@
-// Don't Repeat yourself ||  DRY
+// Declaration
 
-'use strict';
 
-// function printText() {
-//    console.log('Hello to everyone!');
-// }
+const myAge1 = getAge1(1991, 2023);
+console.log(myAge1);
 
-// printText(111);
-// printText();
-// printText();
-// printText();
-// printText();
-
-function colorizer(item, color, colorCode) {
-   // console.log(item, color);
-   const colorizedItem = `The ${item} is ${color}. The code of color is ${colorCode}`;
-   // console.log(colorizedItem);
-   return colorizedItem;
+function getAge1(birthYear, yearNow) {
+   // const age = yearNow - birthYear;
+   return yearNow - birthYear;
 }
 
+// const myAge1 = getAge1(1991, 2023);
+// console.log(myAge1);
 
-const messageFromColorizer = colorizer('desk', 'red', 99);
-console.log(`We have the following message: ${messageFromColorizer}`);
 
-const messageFromColorizer2 = colorizer('hand', 'green', 10);
-console.log(`We have the following message: ${messageFromColorizer2}`);
+// Expresion
+
+const getAge2 = function(birthYear, yearNow) {
+      return yearNow - birthYear;
+}
+
+const myAge2 = getAge2(1991, 2023);
+console.log(myAge2);
+
