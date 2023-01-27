@@ -1,17 +1,19 @@
-const userOne = ['Nikita', 'Lya', 1991, 'Developer', ['Anjela', 'Zabava'], false];
+// for(let rep = 1; rep <= 10; rep++) {
+//         console.log(`Rep ${rep}`);
+// }
 
-for(let i = userOne.length - 1; i >= 0; i--) {
-    console.log(i, userOne[i]);
-};
+// let rep = 1;
+
+// while (rep <= 10) {
+//     console.log(`Push ups repetition ${rep}`);
+//     rep++;
+// }
 
 
-for(let exercise = 1; exercise <= 3; exercise++) {
-    console.log(`Exercise ${exercise}`);
+let diceNumber = Math.trunc(Math.random() * 6) + 1;
 
-    for(let rep = 1; rep <= 5; rep++) {
-        console.log(`Rep ${rep}`);
-    }
-    console.log('Out of inner loop');
+
+while(diceNumber !== 6) {
+    console.log(diceNumber);
+    diceNumber = Math.trunc(Math.random() * 6) + 1;
 }
-
-console.log('Out of outer loop');
