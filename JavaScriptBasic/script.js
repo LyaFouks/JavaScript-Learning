@@ -1,49 +1,17 @@
-// for(let rep = 1; rep <= 10; rep = rep + 2) {
-//     console.log(`Push ups repetition ${rep}`);
-// }
-
-// const userOne = ['Nikita', 'Lya', 1991, 'Developer', ['Anjela', 'Zabava']];
-
-// const types = [];
-
-// for(let i = 0; i < userOne.length; i++) {
-//     console.log(userOne[i], typeof userOne[i]);
-
-//     // types[i] = typeof userOne[i];
-// //    types.push(typeof userOne[i]);
-//    types.unshift(typeof userOne[i]);
-// }
-
-// console.log(types);
-
-
-// const birthYears = [1994, 1991, 1965, 2011];
-// const ages = [];
-
-// for(let i = 0; i < birthYears.length; i++) { 
-//     ages.push(2023 - birthYears[i]);
-// }
-
-// console.log(ages);
-
-
-// Continue and break
-
 const userOne = ['Nikita', 'Lya', 1991, 'Developer', ['Anjela', 'Zabava'], false];
 
+for(let i = userOne.length - 1; i >= 0; i--) {
+    console.log(i, userOne[i]);
+};
 
-console.log('CONTINEU EXAMPLE!');
 
-for(let i = 0; i < userOne.length; i++) {
-if(typeof userOne[i] !== 'string' ) continue;
-    console.log(userOne[i], typeof userOne[i]);
+for(let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`Exercise ${exercise}`);
+
+    for(let rep = 1; rep <= 5; rep++) {
+        console.log(`Rep ${rep}`);
+    }
+    console.log('Out of inner loop');
 }
 
-
-console.log('BREAK EXAMPLE!');
-
-for(let i = 0; i < userOne.length; i++) {
-    if(typeof userOne[i] === 'number' ) break;
-        console.log(userOne[i], typeof userOne[i]);
-    }
-
+console.log('Out of outer loop');
