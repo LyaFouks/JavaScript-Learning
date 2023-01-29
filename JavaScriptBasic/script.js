@@ -45,14 +45,65 @@ const humidities2 = [12, 51, 312, 86, "error", 54, 65, 13, 23, 42, 245, 4];
 // 2. Divide into sub-problems
 // - How to merge two arrays?
 
-const calculateHumiditiesAmplitudeTwoArrays = function (h1, h2) {
+// const calculateHumiditiesAmplitudeTwoArrays = function (h1, h2) {
+// 	const humidities = h1.concat(h2);
+
+// 	let max = humidities[0];
+// 	let min = humidities[0];
+// 	for (let i = 1; i < humidities.length; i++) {
+// 		const currentHumidity = humidities[i];
+// 		if (typeof currentHumidity !== "number") continue;
+// 		if (currentHumidity > max) {
+// 			max = currentHumidity;
+// 		}
+// 		if (currentHumidity < min) {
+// 			min = currentHumidity;
+// 		}
+// 	}
+// 	console.log(max);
+// 	console.log(min);
+// 	return max - min;
+// };
+
+// const amplitude = calculateHumiditiesAmplitudeTwoArrays(
+// 	humidities,
+// 	humidities2
+// );
+
+// console.log(amplitude);
+
+const celciusToKelvin = function () {
+	const measurement = {
+		type: "temp",
+		unit: "celsius",
+		// value: Number(prompt("Temperature in Celcius", 0)),
+		value: 15,
+	};
+
+	// console.log(measurement);
+	console.table(measurement);
+
+	console.log(measurement.value);
+	// console.warn(measurement.value);
+	// console.error(measurement.value);
+
+	const kelvin = measurement.value + 273;
+	return kelvin;
+};
+
+console.log(celciusToKelvin());
+
+// Debugging
+
+const calculateHumiditiesAmplitudeWithBug = function (h1, h2) {
 	const humidities = h1.concat(h2);
 
-	let max = humidities[0];
-	let min = humidities[0];
+	let max = 0;
+	let min = 0;
 	for (let i = 1; i < humidities.length; i++) {
 		const currentHumidity = humidities[i];
 		if (typeof currentHumidity !== "number") continue;
+		// debugger;
 		if (currentHumidity > max) {
 			max = currentHumidity;
 		}
@@ -65,9 +116,6 @@ const calculateHumiditiesAmplitudeTwoArrays = function (h1, h2) {
 	return max - min;
 };
 
-const amplitude = calculateHumiditiesAmplitudeTwoArrays(
-	humidities,
-	humidities2
-);
+const amplitude = calculateHumiditiesAmplitudeWithBug(humidities, humidities2);
 
 console.log(amplitude);
