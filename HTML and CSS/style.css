@@ -1,0 +1,22 @@
+body {
+	background-color: #4da6a6;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	font-size: 1.5rem;
+}
+h1 {
+	font-size: 3rem;
+}
+
+.first-par {
+	color: indigo;
+}
+
+#name {
+	background-color: aquamarine;
+	border: 3px solid rgb(172, 22, 22);
+	border-radius: 10px;
+}
+
+#paragraph2 {
+	background-color: rgb(184, 214, 123);
+}
