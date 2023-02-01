@@ -12,10 +12,10 @@
 
 // document.querySelector(".number-input").value = 13;
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 
-document.querySelector(".question").textContent = secretNumber;
+// Logic implementation
 
 document.querySelector(".check").addEventListener("click", function () {
 	const guessingNumber = Number(document.querySelector(".number-input").value);
@@ -29,6 +29,7 @@ document.querySelector(".check").addEventListener("click", function () {
 		// Player won
 	} else if (guessingNumber === secretNumber) {
 		document.querySelector(".guess-message").textContent = "Правильно!";
+		document.querySelector(".question").textContent = secretNumber;
 		document.querySelector("body").style.backgroundColor = "rgb(9, 250, 21)";
 		document.querySelector(".question").style.width = "50rem";
 
@@ -54,4 +55,17 @@ document.querySelector(".check").addEventListener("click", function () {
 			document.querySelector(".score").textContent = 0;
 		}
 	}
+});
+
+// Button "Again" functional
+
+document.querySelector(".again").addEventListener("click", function () {
+	secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+	document.querySelector(".question").textContent = "???";
+	document.querySelector(".question").style.width = "25rem";
+	document.querySelector(".guess-message").textContent = "Начни угадывать!";
+	document.querySelector(".score").textContent = score = 20;
+	document.querySelector(".number-input").value = "";
+	document.querySelector("body").style.backgroundColor = "rgb(0, 0, 0)";
 });
