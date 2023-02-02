@@ -14,6 +14,7 @@
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highScore = 0;
 
 // Logic implementation
 
@@ -32,6 +33,10 @@ document.querySelector(".check").addEventListener("click", function () {
 		document.querySelector(".question").textContent = secretNumber;
 		document.querySelector("body").style.backgroundColor = "rgb(9, 250, 21)";
 		document.querySelector(".question").style.width = "50rem";
+		if (score > highScore) {
+			highScore = score;
+		}
+		document.querySelector(".highscore").textContent = highScore;
 
 		// To high
 	} else if (guessingNumber > secretNumber) {
@@ -57,7 +62,7 @@ document.querySelector(".check").addEventListener("click", function () {
 	}
 });
 
-// Button "Again" functional
+// Button "Again" function
 
 document.querySelector(".again").addEventListener("click", function () {
 	secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -69,3 +74,5 @@ document.querySelector(".again").addEventListener("click", function () {
 	document.querySelector(".number-input").value = "";
 	document.querySelector("body").style.backgroundColor = "rgb(0, 0, 0)";
 });
+
+// The best result
