@@ -7,7 +7,6 @@ const overlay = document.querySelector(".overlay");
 const btnCloseModalWIndow = document.querySelector(".close-modal-window");
 
 const btnsShowModalWindow = document.querySelectorAll(".show-modal-window");
-console.log(btnsShowModalWindow);
 
 const showModalWindow = function () {
 	modalWindow.classList.remove("hidden");
@@ -30,3 +29,11 @@ for (let i = 0; i < btnsShowModalWindow.length; i++) {
 btnCloseModalWIndow.addEventListener("click", closeModalWindow);
 
 overlay.addEventListener("click", closeModalWindow);
+
+document.addEventListener("keydown", function (e) {
+	console.log(e.key);
+
+	if (e.key === "Escape" && !modalWindow.classList.contains("hidden")) {
+		closeModalWindow();
+	}
+});
