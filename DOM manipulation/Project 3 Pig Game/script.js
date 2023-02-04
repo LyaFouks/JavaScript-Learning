@@ -20,28 +20,58 @@ diceElement.classList.add("hidden");
 const totalScores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let isPlaying = true;
+
+const swithcActivePlayer = function () {
+	currentScore = 0;
+	document.getElementById(`current--${activePlayer}`).textContent =
+		currentScore;
+	activePlayer = activePlayer === 0 ? 1 : 0;
+	player0.classList.toggle("player--active");
+	player1.classList.toggle("player--active");
+};
 
 // Roll the dice
 btnRoll.addEventListener("click", function () {
-	// 1. Generate random number
-	const diceNumber = Math.trunc(Math.random() * 6) + 1;
-	console.log(diceNumber);
+	if (isPlaying) {
+		// 1. Generate random number
+		const diceNumber = Math.trunc(Math.random() * 6) + 1;
+		console.log(diceNumber);
 
-	// 2. Display number on the dice
-	diceElement.classList.remove("hidden");
-	diceElement.src = `dice${diceNumber}.png`;
+		// 2. Display number on the dice
+		diceElement.classList.remove("hidden");
+		diceElement.src = `dice${diceNumber}.png`;
 
-	// 3. If the number is 1, swithc to the next player, if not - add number to the current score
-	if (diceNumber !== 1) {
-		currentScore += diceNumber;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currentScore;
-	} else {
-		currentScore = 0;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currentScore;
-		activePlayer = activePlayer === 0 ? 1 : 0;
-		player0.classList.toggle("player--active");
-		player1.classList.toggle("player--active");
+		// 3. If the number is 1, swithc to the next player, if not - add number to the current score
+		if (diceNumber !== 1) {
+			currentScore += diceNumber;
+			document.getElementById(`current--${activePlayer}`).textContent =
+				currentScore;
+		} else {
+			swithcActivePlayer();
+		}
+	}
+});
+
+btnHold.addEventListener("click", function () {
+	if (isPlaying) {
+		// 1. Add current score to active player total score
+		totalScores[activePlayer] += currentScore;
+		document.getElementById(`score--${activePlayer}`).textContent =
+			totalScores[activePlayer];
+
+		// 2. If total score of active player >= 100, active player won, if not - switch active player
+		if (totalScores[activePlayer] >= 20) {
+			isPlaying = false;
+			document
+				.querySelector(`.player--${activePlayer}`)
+				.classList.add("player--winner");
+			document
+				.querySelector(`.player--${activePlayer}`)
+				.classList.remove("player--active");
+			diceElement.classList.add("hidden");
+		} else {
+			swithcActivePlayer();
+		}
 	}
 });
