@@ -50,40 +50,97 @@
 // console.log(c === window.c);
 
 /*******************************************************************/
-// this keyword
+// // this keyword
 
-// console.log(this);
+// // console.log(this);
 
-const getAge = function (birthYear) {
-	console.log(2023 - birthYear);
-	console.log(this);
-};
+// const getAge = function (birthYear) {
+// 	console.log(2023 - birthYear);
+// 	console.log(this);
+// };
 
-getAge(1991);
+// getAge(1991);
 
-const getAgeArr = (birthYear) => {
-	console.log(2023 - birthYear);
-	console.log(this);
-};
+// const getAgeArr = (birthYear) => {
+// 	console.log(2023 - birthYear);
+// 	console.log(this);
+// };
 
-getAgeArr(1991);
+// getAgeArr(1991);
+
+// const user187 = {
+// 	birthYear: 1991,
+// 	getAge: function () {
+// 		console.log(this);
+// 		console.log(2023 - this.birthYear);
+// 	},
+// };
+
+// user187.getAge();
+
+// const user188 = {
+// 	birthYear: 1993,
+// };
+
+// user188.getAge = user187.getAge;
+// user188.getAge();
+
+// const f = user187.getAge;
+// // f();
+
+/******************************************************************/
+
+// Regular VS Arrow Functions
+
+// var firsName = "Jack";
 
 const user187 = {
+	firstName: "Nikita",
 	birthYear: 1991,
 	getAge: function () {
 		console.log(this);
 		console.log(2023 - this.birthYear);
+
+		// Old approach
+		// const self = this; // self or that
+		// const isAdult = function () {
+		// 	console.log(self);
+		// 	// console.log(2023 - this.birthYear >= 18);
+		// 	console.log(2023 - self.birthYear >= 18);
+		// };
+
+		// New approach after ES6
+		const isAdult = () => {
+			console.log(this);
+			console.log(2023 - this.birthYear >= 18);
+		};
+
+		isAdult();
+	},
+	sayGreeting: function () {
+		// console.log(this);
+		console.log(`Hello, I'm ${this.firsName}`);
 	},
 };
 
+user187.sayGreeting();
 user187.getAge();
+// console.log(this.firsName);
 
-const user188 = {
-	birthYear: 1993,
+/*********************************************************************/
+
+// Arguments keyword
+const exprSum = function (a, b) {
+	console.log(arguments);
+	return a + b;
 };
 
-user188.getAge = user187.getAge;
-user188.getAge();
+exprSum(1, 2);
+exprSum(1, 2, 3, 4, 6, 8, 51);
 
-const f = user187.getAge;
-// f();
+var arrSum = (a, b) => {
+	console.log(arguments);
+	return a + b;
+};
+
+arrSum(7, 19, 43);
