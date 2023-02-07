@@ -1,36 +1,50 @@
 "use strict";
 
-function getAge(year) {
-	const age = 2023 - year;
+// Hoisting
 
-	function printAge() {
-		let info = `${firstName} is ${age}, born in ${year}`;
-		console.log(info);
+// Variables
+console.log(firstname);
+// console.log(job);
+// console.log(birthYear);
 
-		if (age >= 18) {
-			var isAdult = true;
-			const firstName = "John";
-			const adult = `${firstName} is adult`;
-			console.log(adult);
+var firstname = "Nikita";
+let job = "developer";
+const birthYear = 1991;
 
-			function sum(a, b) {
-				return a + b;
-			}
-			console.log(sum(1, 2));
+// Functions
 
-			info = "New info";
-		}
-		console.log(isAdult);
-		console.log(info);
-		// console.log(adult);
-		// sum(1, 2);
-	}
+console.log(decSum(1, 2));
+// console.log(exprSum(1, 2));
+// console.log(arrSum(1, 2));
 
-	printAge();
-	// console.log(isAdult);
-
-	return age;
+function decSum(a, b) {
+	return a + b;
 }
 
-const firstName = "Nikita";
-getAge(1991);
+const exprSum = function (a, b) {
+	return a + b;
+};
+
+var arrSum = (a, b) => a + b;
+
+// Example
+
+console.log(isUserValid);
+
+if (!isUserValid) {
+	deleteUser();
+}
+
+var isUserValid = true;
+
+function deleteUser() {
+	console.log("User is deleted");
+}
+
+var a = 1;
+let b = 2;
+const c = 3;
+
+console.log(a === window.a);
+console.log(b === window.b);
+console.log(c === window.c);
