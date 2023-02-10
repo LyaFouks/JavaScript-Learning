@@ -15,6 +15,10 @@ const japaneseRestaurant = {
 			open: 10,
 			close: 23,
 		},
+		sat: {
+			open: 0,
+			close: 24,
+		},
 		sun: {
 			open: 12,
 			close: 23,
@@ -36,11 +40,58 @@ const japaneseRestaurant = {
 	orderSushi: function (ing1, ing2, ing3) {
 		console.log(`You have order sushi with ${ing1}, ${ing2}, ${ing3}`);
 	},
+	orderRamen: function (noodle, ...otherIngr) {
+		console.log(noodle);
+		console.log(otherIngr);
+	},
 };
 
 /************************************************************************************************************************************************* */
 
-// // Spread operator
+// REST PATTERN
+
+// 1. Rest pattern with destructuring
+
+// Rest pattern with arrays
+// This is spread operator, because ... are on the right side of =
+const arr = [1, 2, ...[3, 5]];
+
+// This is rest pattern, because ... are on the left side of =
+const [a1, a2, ...items] = [1, 2, 3, 4];
+console.log(a1, a2, items);
+
+const [seaweed, , edamame, ...otherFood] = [
+	...japaneseRestaurant.appetizers,
+	...japaneseRestaurant.mainMenu,
+];
+console.log(seaweed, edamame, otherFood);
+
+// Rest pattern with objects
+const { sat, sun, ...weekdays } = japaneseRestaurant.workingHours;
+console.log(sat, sun, weekdays);
+
+// 2. Rest pattern with functions
+
+const sum = function (...nums) {
+	let sum = 0;
+	for (let i = 0; i < nums.length; i++) {
+		sum += nums[i];
+	}
+	console.log(sum);
+};
+
+sum(2, 5);
+sum(1, 4, 6, 8);
+
+const numbers = [3, 44, 2];
+
+sum(...numbers);
+
+japaneseRestaurant.orderRamen("Color Noodle", "Meat", "Banana", "Cabage");
+
+/************************************************************************************************************************************************* */
+
+// // SPREAD OPERATOR
 
 // // Old bad approach
 // const arr = [1, 3, 5];
@@ -83,22 +134,22 @@ const japaneseRestaurant = {
 
 // japaneseRestaurant.orderSushi(...ingridients);
 
-// Objects
-const newJapaneseRestaurant = {
-	foundationDate: 2011,
-	...japaneseRestaurant,
-	owner: "Suzuki",
-};
-console.log(newJapaneseRestaurant);
+// // Objects
+// const newJapaneseRestaurant = {
+// 	foundationDate: 2011,
+// 	...japaneseRestaurant,
+// 	owner: "Suzuki",
+// };
+// console.log(newJapaneseRestaurant);
 
-const japaneseRestaurantCopy = { ...japaneseRestaurant };
-japaneseRestaurantCopy.name = "Suzuki Sushi";
-console.log(japaneseRestaurant.name);
-console.log(japaneseRestaurantCopy.name);
+// const japaneseRestaurantCopy = { ...japaneseRestaurant };
+// japaneseRestaurantCopy.name = "Suzuki Sushi";
+// console.log(japaneseRestaurant.name);
+// console.log(japaneseRestaurantCopy.name);
 
 /************************************************************************************************************************************************* */
 
-// // Destructuring Objects
+// // DESTRUCTURING OBJECTS
 
 // japaneseRestaurant.foodDelivery({
 // 	deliveryTime: "12:30",
@@ -134,7 +185,7 @@ console.log(japaneseRestaurantCopy.name);
 
 /************************************************************************************************************************************************* */
 
-// // Destructuring Arrays
+// // DESTRUCTURING ARRAYS
 
 // const arr = [3, 5, 7];
 // const x1 = arr[0];
