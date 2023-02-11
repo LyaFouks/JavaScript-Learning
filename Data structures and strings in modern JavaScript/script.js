@@ -48,16 +48,36 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
-// Nullish Coalescing operator
+// // CYCLE FOR OF
 
-japaneseRestaurant.guestsNumber = "";
+// const menu = [...japaneseRestaurant.appetizers, ...japaneseRestaurant.mainMenu];
 
-const guests = japaneseRestaurant.guestsNumber || 5;
-console.log(guests);
+// for (const food of menu) {
+// 	console.log(food);
+// }
 
-// Nullish values: null and undefined (NOT 0 or '')
-const guests1 = japaneseRestaurant.guestsNumber ?? 5;
-console.log(guests1);
+// for (const food of menu.entries()) {
+// 	console.log(`${food[0] + 1}. ${food[1]}`);
+// }
+
+// for (const [index, food] of menu.entries()) {
+// 	console.log(`${index + 1}. ${food}`);
+// }
+
+// // console.log([...menu.entries()]);
+
+/************************************************************************************************************************************************* */
+
+// // Nullish Coalescing operator
+
+// japaneseRestaurant.guestsNumber = "";
+
+// const guests = japaneseRestaurant.guestsNumber || 5;
+// console.log(guests);
+
+// // Nullish values: null and undefined (NOT 0 or '')
+// const guests1 = japaneseRestaurant.guestsNumber ?? 5;
+// console.log(guests1);
 
 /************************************************************************************************************************************************* */
 
