@@ -58,6 +58,56 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
+// // OPTIONAL CHAINING
+
+// if (japaneseRestaurant.workingHours && japaneseRestaurant.workingHours.thu) {
+// 	console.log(japaneseRestaurant.workingHours.thu.open);
+// }
+
+// // if (japaneseRestaurant.workingHours.fri) {
+// // 	console.log(japaneseRestaurant.workingHours.fri.open);
+// // }
+
+// // Using optional chaining
+// // Properties
+// console.log(japaneseRestaurant.workingHours.thu?.open);
+
+// console.log(japaneseRestaurant.workingHours?.thu?.open);
+
+// const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// for (const day of daysOfWeek) {
+// 	console.log(day);
+// 	const open = japaneseRestaurant.workingHours[day]?.open ?? "never";
+// 	console.log(`On ${day} restaurant open at ${open}`);
+// }
+
+// // Methods
+// console.log(japaneseRestaurant.ordeFood?.(1, 2) ?? "Method does not exist");
+
+// console.log(japaneseRestaurant.order?.(1, 2) ?? "Method does not exist");
+
+// Arrays
+const posts = [
+	{
+		name: "Jazz is cool",
+		username: "Ted",
+	},
+	{
+		name: "Jazz is shit",
+		username: "Dick",
+	},
+];
+const users = [];
+
+console.log(posts[1]?.name ?? "This post does not exist");
+console.log(posts[2]?.name ?? "This post does not exist");
+
+// Check if array is empty
+console.log(posts[0]?.name ?? "This array is empty");
+console.log(users[0]?.name ?? "This array is empty");
+
+/************************************************************************************************************************************************* */
+
 // // ENHANCED OBJECT LITERALS
 // // Changes in the main object above
 
