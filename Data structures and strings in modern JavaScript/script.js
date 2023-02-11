@@ -58,30 +58,84 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
-// CYCLES AND OBJECTS
+// // CYCLES AND OBJECTS
 
-// Property names
-const props = Object.keys(workingHours);
-console.log(props);
-console.log(`"Banzai" opens ${props.length} days in a week.`);
+// // Property names
+// const props = Object.keys(workingHours);
+// console.log(props);
+// console.log(`"Banzai" opens ${props.length} days in a week.`);
 
-for (const day of props) {
-	console.log(day);
+// for (const day of props) {
+// 	console.log(day);
+// }
+
+// // Property values
+// const values = Object.values(workingHours);
+// console.log(values);
+
+// // Property names and values
+// const entries = Object.entries(workingHours);
+// console.log(entries);
+
+// for (const [day, { open, close }] of entries) {
+// 	console.log(
+// 		`Restaurant 'Banzai' on ${day} opens at ${open} and closes at ${close}`
+// 	);
+// }
+
+/************************************************************************************************************************************************* */
+
+// SET
+
+const orders = new Set([
+	"Sushi",
+	"Ramen",
+	"Sushi",
+	"Tempura",
+	"Ramen",
+	"Sushi",
+]);
+console.log(orders);
+
+console.log(new Set("Hello!"));
+console.log(new Set());
+console.log(orders.size);
+
+console.log(orders.has("Sushi"));
+console.log(orders.has("Pizza"));
+
+orders.add("Edamame");
+orders.add("Edamame");
+
+orders.delete("Tempura");
+// orders.clear();
+
+console.log(orders);
+
+for (const order of orders) {
+	console.log(order);
 }
 
-// Property values
-const values = Object.values(workingHours);
-console.log(values);
+// Remove duplicates
+const mealIngridients = [
+	"Rice",
+	"Pepper",
+	"Garlic",
+	"Pepper",
+	"Garlic",
+	"Meat",
+	"Meat",
+	"Garlic",
+];
 
-// Property names and values
-const entries = Object.entries(workingHours);
-console.log(entries);
+console.log(new Set(mealIngridients).size);
+console.log(new Set("Nikita Lyahovskiy").size);
 
-for (const [day, { open, close }] of entries) {
-	console.log(
-		`Restaurant 'Banzai' on ${day} opens at ${open} and closes at ${close}`
-	);
-}
+const mealIngridientsSet = new Set(mealIngridients);
+console.log(mealIngridientsSet);
+
+const mealIngridientsUnique = [...mealIngridientsSet];
+console.log(mealIngridientsUnique);
 
 /************************************************************************************************************************************************* */
 
