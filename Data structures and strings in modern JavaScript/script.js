@@ -1,33 +1,41 @@
 "use strict";
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+const workingHours = {
+	[weekdays[2]]: {
+		open: 10,
+		close: 23,
+	},
+	[weekdays[4]]: {
+		open: 10,
+		close: 23,
+	},
+	[weekdays[5]]: {
+		open: 0,
+		close: 24,
+	},
+	[weekdays[6]]: {
+		open: 12,
+		close: 23,
+	},
+};
+
 const japaneseRestaurant = {
 	name: "Banzai",
 	location: "108 Markham Woods Rd, Longwood, USA",
 	categories: ["Japanese", "Sushi", "Vegetarian", "Organic"],
 	appetizers: ["Seaweed salad", "Tempura shrimp", "Edamame", "Sushi rice"],
 	mainMenu: ["Sushi", "Ramen", "Tempura"],
-	workingHours: {
-		wed: {
-			open: 10,
-			close: 23,
-		},
-		fri: {
-			open: 10,
-			close: 23,
-		},
-		sat: {
-			open: 0,
-			close: 24,
-		},
-		sun: {
-			open: 12,
-			close: 23,
-		},
-	},
-	ordeFood: function (appetizersIndex, mainMenuIndex) {
+
+	// Enhanced syntax of ES6 object literals
+	workingHours,
+
+	ordeFood(appetizersIndex, mainMenuIndex) {
 		return [this.appetizers[appetizersIndex], this.mainMenu[mainMenuIndex]];
 	},
-	foodDelivery: function ({
+
+	foodDelivery({
 		mainMenuIndex = 0,
 		appetizersIndex = 0,
 		adress,
@@ -37,14 +45,21 @@ const japaneseRestaurant = {
 			`Your order on the way to you! ${this.appetizers[appetizersIndex]} and ${this.mainMenu[mainMenuIndex]} will be arrived to ${adress} at ${deliveryTime}`
 		);
 	},
-	orderSushi: function (ing1, ing2, ing3) {
+
+	orderSushi(ing1, ing2, ing3) {
 		console.log(`You have order sushi with ${ing1}, ${ing2}, ${ing3}`);
 	},
-	orderRamen: function (noodle, ...otherIngr) {
+
+	orderRamen(noodle, ...otherIngr) {
 		console.log(noodle);
 		console.log(otherIngr);
 	},
 };
+
+/************************************************************************************************************************************************* */
+
+// // ENHANCED OBJECT LITERALS
+// // Changes in the main object above
 
 /************************************************************************************************************************************************* */
 
