@@ -58,6 +58,33 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
+// CYCLES AND OBJECTS
+
+// Property names
+const props = Object.keys(workingHours);
+console.log(props);
+console.log(`"Banzai" opens ${props.length} days in a week.`);
+
+for (const day of props) {
+	console.log(day);
+}
+
+// Property values
+const values = Object.values(workingHours);
+console.log(values);
+
+// Property names and values
+const entries = Object.entries(workingHours);
+console.log(entries);
+
+for (const [day, { open, close }] of entries) {
+	console.log(
+		`Restaurant 'Banzai' on ${day} opens at ${open} and closes at ${close}`
+	);
+}
+
+/************************************************************************************************************************************************* */
+
 // // OPTIONAL CHAINING
 
 // if (japaneseRestaurant.workingHours && japaneseRestaurant.workingHours.thu) {
@@ -86,25 +113,25 @@ const japaneseRestaurant = {
 
 // console.log(japaneseRestaurant.order?.(1, 2) ?? "Method does not exist");
 
-// Arrays
-const posts = [
-	{
-		name: "Jazz is cool",
-		username: "Ted",
-	},
-	{
-		name: "Jazz is shit",
-		username: "Dick",
-	},
-];
-const users = [];
+// // Arrays
+// const posts = [
+// 	{
+// 		name: "Jazz is cool",
+// 		username: "Ted",
+// 	},
+// 	{
+// 		name: "Jazz is shit",
+// 		username: "Dick",
+// 	},
+// ];
+// const users = [];
 
-console.log(posts[1]?.name ?? "This post does not exist");
-console.log(posts[2]?.name ?? "This post does not exist");
+// console.log(posts[1]?.name ?? "This post does not exist");
+// console.log(posts[2]?.name ?? "This post does not exist");
 
-// Check if array is empty
-console.log(posts[0]?.name ?? "This array is empty");
-console.log(users[0]?.name ?? "This array is empty");
+// // Check if array is empty
+// console.log(posts[0]?.name ?? "This array is empty");
+// console.log(users[0]?.name ?? "This array is empty");
 
 /************************************************************************************************************************************************* */
 
