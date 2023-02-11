@@ -48,6 +48,19 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
+// Nullish Coalescing operator
+
+japaneseRestaurant.guestsNumber = "";
+
+const guests = japaneseRestaurant.guestsNumber || 5;
+console.log(guests);
+
+// Nullish values: null and undefined (NOT 0 or '')
+const guests1 = japaneseRestaurant.guestsNumber ?? 5;
+console.log(guests1);
+
+/************************************************************************************************************************************************* */
+
 // // SHORT-CIRCUIT EVALUATION
 
 // // OR (||) operator. Use any data types, return any data types, short-circuit evaluation
