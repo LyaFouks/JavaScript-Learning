@@ -48,46 +48,79 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
-// REST PATTERN
+// // SHORT-CIRCUIT EVALUATION
 
-// 1. Rest pattern with destructuring
+// // OR (||) operator. Use any data types, return any data types, short-circuit evaluation
+// console.log(5 || "Hello!");
+// console.log("" || "Hello!");
+// console.log(true || 0);
+// console.log(undefined || null);
 
-// Rest pattern with arrays
-// This is spread operator, because ... are on the right side of =
-const arr = [1, 2, ...[3, 5]];
+// console.log(undefined || "" || 0 || "Hey!" || 23 || null);
 
-// This is rest pattern, because ... are on the left side of =
-const [a1, a2, ...items] = [1, 2, 3, 4];
-console.log(a1, a2, items);
+// japaneseRestaurant.guestsNumber = 0;
 
-const [seaweed, , edamame, ...otherFood] = [
-	...japaneseRestaurant.appetizers,
-	...japaneseRestaurant.mainMenu,
-];
-console.log(seaweed, edamame, otherFood);
+// const guests = japaneseRestaurant.guestsNumber
+// 	? japaneseRestaurant.guestsNumber
+// 	: 5;
+// console.log(guests);
 
-// Rest pattern with objects
-const { sat, sun, ...weekdays } = japaneseRestaurant.workingHours;
-console.log(sat, sun, weekdays);
+// const guests1 = japaneseRestaurant.guestsNumber || 5;
+// console.log(guests1);
 
-// 2. Rest pattern with functions
+// // AND (&&) operator. Use any data types, return any data types, short-circuit evaluation
+// console.log(0 && "Hello!");
+// console.log(1 && "Hello!");
+// console.log("hey" && 33 && 0 && 55 && null);
 
-const sum = function (...nums) {
-	let sum = 0;
-	for (let i = 0; i < nums.length; i++) {
-		sum += nums[i];
-	}
-	console.log(sum);
-};
+// if (japaneseRestaurant.orderRamen) {
+// 	japaneseRestaurant.orderRamen("Something");
+// }
 
-sum(2, 5);
-sum(1, 4, 6, 8);
+// japaneseRestaurant.orderRamen && japaneseRestaurant.orderRamen("Something");
 
-const numbers = [3, 44, 2];
+/************************************************************************************************************************************************* */
 
-sum(...numbers);
+// // REST PATTERN
 
-japaneseRestaurant.orderRamen("Color Noodle", "Meat", "Banana", "Cabage");
+// // 1. Rest pattern with destructuring
+
+// // Rest pattern with arrays
+// // This is spread operator, because ... are on the right side of =
+// const arr = [1, 2, ...[3, 5]];
+
+// // This is rest pattern, because ... are on the left side of =
+// const [a1, a2, ...items] = [1, 2, 3, 4];
+// console.log(a1, a2, items);
+
+// const [seaweed, , edamame, ...otherFood] = [
+// 	...japaneseRestaurant.appetizers,
+// 	...japaneseRestaurant.mainMenu,
+// ];
+// console.log(seaweed, edamame, otherFood);
+
+// // Rest pattern with objects
+// const { sat, sun, ...weekdays } = japaneseRestaurant.workingHours;
+// console.log(sat, sun, weekdays);
+
+// // 2. Rest pattern with functions
+
+// const sum = function (...nums) {
+// 	let sum = 0;
+// 	for (let i = 0; i < nums.length; i++) {
+// 		sum += nums[i];
+// 	}
+// 	console.log(sum);
+// };
+
+// sum(2, 5);
+// sum(1, 4, 6, 8);
+
+// const numbers = [3, 44, 2];
+
+// sum(...numbers);
+
+// japaneseRestaurant.orderRamen("Color Noodle", "Meat", "Banana", "Cabage");
 
 /************************************************************************************************************************************************* */
 
