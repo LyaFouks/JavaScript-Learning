@@ -104,7 +104,79 @@ const x = new String("Hello!");
 console.log(typeof x);
 console.log(typeof x.slice(2));
 
-/************************************************************************************************************************************************* */
+console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+// Fix the passenger name
+const passengerName = "liNDa"; // Linda
+const passengerNameLower = passengerName.toLowerCase();
+const passengerNameFixed =
+	passengerNameLower[0].toUpperCase() + passengerNameLower.slice(1);
+console.log(passengerNameFixed);
+
+// Email validation
+const email = "someemail@gmail.com";
+const loginEmail = "   SomeEmail@Gmail.com \n";
+
+const emailLower = loginEmail.toLowerCase();
+const emailTrimde = emailLower.trim();
+console.log(emailTrimde);
+
+const emailNormalized = loginEmail.toLowerCase().trim();
+console.log(emailNormalized);
+console.log(email === emailNormalized);
+
+// Replacing
+const ticketPriceEU = "197,23#";
+const ticketPriceUS = ticketPriceEU.replace(",", ".").replace("#", "$");
+console.log(ticketPriceUS);
+
+const announcement =
+	"All pasengers of flights EG234 come to boarding door 18. Boarding door 18!";
+console.log(announcement.replaceAll("door", "gate")); // New approach
+
+console.log(announcement.replace(/door/g, "gate")); // Old approach
+
+// Methods return boolean
+console.log(airplane);
+console.log(airplane.includes("737"));
+console.log(airplane.includes("739"));
+
+console.log(airplane.startsWith("Bo"));
+console.log(airplane.startsWith("Bt"));
+console.log(airplane.startsWith("737"));
+
+console.log(airplane.endsWith("737"));
+console.log(airplane.endsWith(" 737"));
+console.log(airplane.endsWith("Boeing"));
+
+const airplane1 = "AirBus";
+
+if (airplane.startsWith("Boeing")) {
+	console.log("You gonna fly on Boeing");
+}
+
+if (airplane1.startsWith("Boeing")) {
+	console.log("You gonna fly on Boeing");
+} else {
+	console.log("You gonna fly on AirBus");
+}
+
+// Example
+const checkLuggage = function (luggage) {
+	const luggageLower = luggage.toLowerCase();
+	if (luggageLower.includes("knife") || luggageLower.includes("gun")) {
+		console.log("You are not allowed on board!");
+	} else {
+		console.log("Welcome to the board!");
+	}
+};
+
+checkLuggage("Food, jeans, sokcs and Swiss Knife");
+checkLuggage("Laptop and food");
+checkLuggage("Camera, food, Gun for protection");
+
+/************************************************************************************************************************************************** */
 
 // // MAP. ITERATION
 
