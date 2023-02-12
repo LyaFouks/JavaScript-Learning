@@ -58,6 +58,99 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
+// MAP BASIC
+
+const restaurant = new Map();
+restaurant.set("name", "McDonald's");
+restaurant.set(1, "London, England");
+restaurant.set(2, "Paris, France");
+restaurant.set(3, "Kiev, Ukraine");
+console.log(restaurant);
+
+restaurant
+	.set("categories", ["Japanese", "Sushi", "Vegetarian", "Organic"])
+	.set("open", 10)
+	.set("close", 23)
+	.set(true, "McDonald's is open :)")
+	.set(false, "McDonald's is closed :(");
+
+console.log(restaurant.get("name"));
+console.log(restaurant.get(true));
+console.log(restaurant.get(3));
+
+const time = 22;
+console.log(
+	restaurant.get(
+		time > restaurant.get("open") && time < restaurant.get("close")
+	)
+);
+
+console.log(restaurant.has("categories"));
+restaurant.delete(1);
+// restaurant.clear();
+const arr = [1, 2, 3];
+restaurant.set(arr, "Hello!");
+restaurant.set(document.querySelector("h2"), "Heading");
+console.log(restaurant);
+console.log(restaurant.size);
+console.log(restaurant.get(arr));
+
+/************************************************************************************************************************************************* */
+
+// // SET
+
+// const orders = new Set([
+// 	"Sushi",
+// 	"Ramen",
+// 	"Sushi",
+// 	"Tempura",
+// 	"Ramen",
+// 	"Sushi",
+// ]);
+// console.log(orders);
+
+// console.log(new Set("Hello!"));
+// console.log(new Set());
+// console.log(orders.size);
+
+// console.log(orders.has("Sushi"));
+// console.log(orders.has("Pizza"));
+
+// orders.add("Edamame");
+// orders.add("Edamame");
+
+// orders.delete("Tempura");
+// // orders.clear();
+
+// console.log(orders);
+
+// for (const order of orders) {
+// 	console.log(order);
+// }
+
+// // Remove duplicates
+// const mealIngridients = [
+// 	"Rice",
+// 	"Pepper",
+// 	"Garlic",
+// 	"Pepper",
+// 	"Garlic",
+// 	"Meat",
+// 	"Meat",
+// 	"Garlic",
+// ];
+
+// console.log(new Set(mealIngridients).size);
+// console.log(new Set("Nikita Lyahovskiy").size);
+
+// const mealIngridientsSet = new Set(mealIngridients);
+// console.log(mealIngridientsSet);
+
+// const mealIngridientsUnique = [...mealIngridientsSet];
+// console.log(mealIngridientsUnique);
+
+/************************************************************************************************************************************************* */
+
 // // CYCLES AND OBJECTS
 
 // // Property names
@@ -82,60 +175,6 @@ const japaneseRestaurant = {
 // 		`Restaurant 'Banzai' on ${day} opens at ${open} and closes at ${close}`
 // 	);
 // }
-
-/************************************************************************************************************************************************* */
-
-// SET
-
-const orders = new Set([
-	"Sushi",
-	"Ramen",
-	"Sushi",
-	"Tempura",
-	"Ramen",
-	"Sushi",
-]);
-console.log(orders);
-
-console.log(new Set("Hello!"));
-console.log(new Set());
-console.log(orders.size);
-
-console.log(orders.has("Sushi"));
-console.log(orders.has("Pizza"));
-
-orders.add("Edamame");
-orders.add("Edamame");
-
-orders.delete("Tempura");
-// orders.clear();
-
-console.log(orders);
-
-for (const order of orders) {
-	console.log(order);
-}
-
-// Remove duplicates
-const mealIngridients = [
-	"Rice",
-	"Pepper",
-	"Garlic",
-	"Pepper",
-	"Garlic",
-	"Meat",
-	"Meat",
-	"Garlic",
-];
-
-console.log(new Set(mealIngridients).size);
-console.log(new Set("Nikita Lyahovskiy").size);
-
-const mealIngridientsSet = new Set(mealIngridients);
-console.log(mealIngridientsSet);
-
-const mealIngridientsUnique = [...mealIngridientsSet];
-console.log(mealIngridientsUnique);
 
 /************************************************************************************************************************************************* */
 
