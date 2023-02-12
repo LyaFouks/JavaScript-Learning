@@ -71,12 +71,14 @@ console.log("SkyUp"[0]);
 console.log(airLine.length);
 console.log("Boeing 737".length);
 
+// Methods indexOf, lastIndexOf
 console.log(airplane.indexOf(" "));
 console.log(airplane.indexOf("7"));
 console.log(airplane.lastIndexOf("7"));
 console.log(airLine.indexOf("Up"));
 console.log(airLine.indexOf("up"));
 
+// Method slice
 console.log(airplane.slice(7));
 console.log(airplane);
 console.log(airplane.slice(0, 6));
@@ -104,17 +106,16 @@ const x = new String("Hello!");
 console.log(typeof x);
 console.log(typeof x.slice(2));
 
+// Fix the passenger name (Methods toLowerCase, toUpperCase)
 console.log(airLine.toLowerCase());
 console.log(airLine.toUpperCase());
-
-// Fix the passenger name
 const passengerName = "liNDa"; // Linda
 const passengerNameLower = passengerName.toLowerCase();
 const passengerNameFixed =
 	passengerNameLower[0].toUpperCase() + passengerNameLower.slice(1);
 console.log(passengerNameFixed);
 
-// Email validation
+// Email validation (Trim method)
 const email = "someemail@gmail.com";
 const loginEmail = "   SomeEmail@Gmail.com \n";
 
@@ -126,7 +127,7 @@ const emailNormalized = loginEmail.toLowerCase().trim();
 console.log(emailNormalized);
 console.log(email === emailNormalized);
 
-// Replacing
+// Replacing (Replace method)
 const ticketPriceEU = "197,23#";
 const ticketPriceUS = ticketPriceEU.replace(",", ".").replace("#", "$");
 console.log(ticketPriceUS);
@@ -137,7 +138,7 @@ console.log(announcement.replaceAll("door", "gate")); // New approach
 
 console.log(announcement.replace(/door/g, "gate")); // Old approach
 
-// Methods return boolean
+// Methods return boolean (startsWith, endsWith, includes)
 console.log(airplane);
 console.log(airplane.includes("737"));
 console.log(airplane.includes("739"));
@@ -175,6 +176,53 @@ const checkLuggage = function (luggage) {
 checkLuggage("Food, jeans, sokcs and Swiss Knife");
 checkLuggage("Laptop and food");
 checkLuggage("Camera, food, Gun for protection");
+
+// Split method
+console.log("My+name+is+Nikita!".split("+"));
+console.log("Nikita Lyhovskiy".split(" "));
+
+const [firsName, lastName] = "Nikita Lyhovskiy".split(" ");
+console.log(firsName, lastName);
+
+// Join method
+console.log(["Mr.", firsName, lastName.toUpperCase()].join(" "));
+
+const capitalizeName = function (name) {
+	const names = name.split(" ");
+	const namesCapitalize = [];
+	for (const n of names) {
+		// namesCapitalize.push(n[0].toUpperCase() + n.slice(1));
+		namesCapitalize.push(n.replace(n[0], n[0].toUpperCase()));
+	}
+	const capitalizedFullName = namesCapitalize.join(" ");
+	return capitalizedFullName;
+};
+
+console.log(capitalizeName("nikita lyahovskiy"));
+console.log(capitalizeName("jack white tiger jr."));
+
+// Padding (padStart, padEnd methods)
+const message = "Hi there!";
+console.log(message.padStart(20, "*").padEnd(30, "*"));
+
+const maskCreditCard = function (cardNumber) {
+	const strCardNumber = cardNumber + "";
+	const last4 = strCardNumber.slice(-4);
+	return last4.padStart(strCardNumber.length, "*");
+};
+
+console.log(maskCreditCard(1415313513513513));
+console.log(maskCreditCard("7358723981537581039512462621"));
+
+// Repeat method
+const greeting = "Hi";
+console.log(greeting.repeat(50));
+
+const howMuchYouLoveSomebody = function (loveNumber) {
+	console.log(`I love you ${"# ".repeat(loveNumber)}`);
+};
+
+howMuchYouLoveSomebody(100);
 
 /************************************************************************************************************************************************** */
 
