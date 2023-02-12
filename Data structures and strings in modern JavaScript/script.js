@@ -58,42 +58,85 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
-// MAP BASIC
+// // MAP. ITERATION
 
-const restaurant = new Map();
-restaurant.set("name", "McDonald's");
-restaurant.set(1, "London, England");
-restaurant.set(2, "Paris, France");
-restaurant.set(3, "Kiev, Ukraine");
-console.log(restaurant);
+// const question = new Map([
+// 	["question", "What is the most popular programmig language for front-end?"],
+// 	[1, "JavaScript"],
+// 	[2, "Java"],
+// 	[3, "Python"],
+// 	["correctAnswer", 1],
+// 	[true, "Correct answer :D"],
+// 	[false, "This is incorrect :( Try again"],
+// ]);
 
-restaurant
-	.set("categories", ["Japanese", "Sushi", "Vegetarian", "Organic"])
-	.set("open", 10)
-	.set("close", 23)
-	.set(true, "McDonald's is open :)")
-	.set(false, "McDonald's is closed :(");
+// console.log(question);
 
-console.log(restaurant.get("name"));
-console.log(restaurant.get(true));
-console.log(restaurant.get(3));
+// // Quiz app
+// console.log(question.get("question"));
 
-const time = 22;
-console.log(
-	restaurant.get(
-		time > restaurant.get("open") && time < restaurant.get("close")
-	)
-);
+// for (const [key, value] of question) {
+// 	if (typeof key === "number") {
+// 		console.log(`${key}: ${value}`);
+// 	}
+// }
 
-console.log(restaurant.has("categories"));
-restaurant.delete(1);
-// restaurant.clear();
-const arr = [1, 2, 3];
-restaurant.set(arr, "Hello!");
-restaurant.set(document.querySelector("h2"), "Heading");
-console.log(restaurant);
-console.log(restaurant.size);
-console.log(restaurant.get(arr));
+// // const answer = Number(prompt("Choose the option number"));
+// // // console.log(answer);
+// // const correctAnswer = question.get("correctAnswer");
+// // // console.log(correctAnswer);
+// // console.log(question.get(answer === correctAnswer));
+
+// // Converting objects to maps
+// console.log(Object.entries(workingHours));
+// const workingHoursMap = new Map(Object.entries(workingHours));
+// console.log(workingHoursMap);
+
+// // Converting maps to arrays
+// console.log([...question]);
+
+// console.log(question.entries());
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
+
+/************************************************************************************************************************************************* */
+
+// // MAP BASIC
+
+// const restaurant = new Map();
+// restaurant.set("name", "McDonald's");
+// restaurant.set(1, "London, England");
+// restaurant.set(2, "Paris, France");
+// restaurant.set(3, "Kiev, Ukraine");
+// console.log(restaurant);
+
+// restaurant
+// 	.set("categories", ["Japanese", "Sushi", "Vegetarian", "Organic"])
+// 	.set("open", 10)
+// 	.set("close", 23)
+// 	.set(true, "McDonald's is open :)")
+// 	.set(false, "McDonald's is closed :(");
+
+// console.log(restaurant.get("name"));
+// console.log(restaurant.get(true));
+// console.log(restaurant.get(3));
+
+// const time = 22;
+// console.log(
+// 	restaurant.get(
+// 		time > restaurant.get("open") && time < restaurant.get("close")
+// 	)
+// );
+
+// console.log(restaurant.has("categories"));
+// restaurant.delete(1);
+// // restaurant.clear();
+// const arr = [1, 2, 3];
+// restaurant.set(arr, "Hello!");
+// restaurant.set(document.querySelector("h2"), "Heading");
+// console.log(restaurant);
+// console.log(restaurant.size);
+// console.log(restaurant.get(arr));
 
 /************************************************************************************************************************************************* */
 
