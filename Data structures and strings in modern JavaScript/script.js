@@ -58,6 +58,54 @@ const japaneseRestaurant = {
 
 /************************************************************************************************************************************************* */
 
+// STRINGS
+
+const airLine = "SkyUp AirLine";
+const airplane = "Boeing 737";
+
+console.log(airplane[0]);
+console.log(airplane[1]);
+console.log(airplane[2]);
+console.log("SkyUp"[0]);
+
+console.log(airLine.length);
+console.log("Boeing 737".length);
+
+console.log(airplane.indexOf(" "));
+console.log(airplane.indexOf("7"));
+console.log(airplane.lastIndexOf("7"));
+console.log(airLine.indexOf("Up"));
+console.log(airLine.indexOf("up"));
+
+console.log(airplane.slice(7));
+console.log(airplane);
+console.log(airplane.slice(0, 6));
+console.log(airLine.slice(0, airLine.indexOf(" ")));
+console.log(airLine.slice(airLine.lastIndexOf(" ") + 1));
+
+console.log(airLine.slice(-2));
+console.log(airLine.slice(2, -2));
+
+const checkMiddleSeat = function (seat) {
+	// B and E are middle seats
+	const seatLetter = seat.slice(-1);
+	if (seatLetter === "B" || seatLetter === "E") {
+		console.log("This is a middle seat");
+	} else {
+		console.log("This is not a middle seat");
+	}
+};
+
+checkMiddleSeat("21A");
+checkMiddleSeat("7B");
+checkMiddleSeat("14E");
+
+const x = new String("Hello!");
+console.log(typeof x);
+console.log(typeof x.slice(2));
+
+/************************************************************************************************************************************************* */
+
 // // MAP. ITERATION
 
 // const question = new Map([
