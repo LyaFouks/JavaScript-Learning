@@ -3,28 +3,86 @@
 /************************************************************************* */
 
 /************************************************************************* */
-/************************************************************************* */
 
-// RETURNING FUNCTIONS
+// CALL() AND APPLY() METHODS
 
-const greet = function (greetingText) {
-	return function (name) {
-		console.log(`${greetingText} ${name}`);
-	};
+const book = function (flightNumber, passengerName) {
+	console.log(
+		`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
+	);
+	this.bookings.push({
+		flight: `${this.iataCode}${flightNumber}`,
+		passengerName,
+	});
 };
 
-const hi = greet("Hi");
-hi("Jack");
-hi("Diana");
-hi("Nikita");
+const airLine1 = {
+	airLineName: "SkyUp",
+	iataCode: "SU",
+	bookings: [],
+	// book(flightNumber, passengerName) {
+	// 	console.log(
+	// 		`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
+	// 	);
+	// 	this.bookings.push({
+	// 		flight: `${this.iataCode}${flightNumber}`,
+	// 		passengerName,
+	// 	});
+	// },
+};
 
-greet("Hey")("Lily");
+// airLine1.book(346, "Jim DiGreez");
+// airLine1.book(256, "Usain Bolt");
 
-// greet1() =>
-const greet1 = (greetingText1) => (name1) =>
-	console.log(`${greetingText1} ${name1}`);
+// console.log(airLine1);
 
-greet1("Hello")("Sam");
+const airLine2 = {
+	airLineName: "EuroFlights",
+	iataCode: "EF",
+	bookings: [],
+};
+
+// const book = airLine1.book;
+
+// This doesn't work
+// book(345, "Linda Lagerlyof");
+
+// call() Method
+book.call(airLine2, 345, "Linda Lagerlyof");
+console.log(airLine2);
+
+book.call(airLine1, 456, "Bob Smith");
+console.log(airLine1);
+
+// apply() Method - old approach
+const flightData = [111, "Nick Wong"];
+book.apply(airLine2, flightData);
+console.log(airLine2);
+
+book.call(airLine1, ...flightData);
+console.log(airLine1);
+/************************************************************************* */
+
+// // RETURNING FUNCTIONS
+
+// const greet = function (greetingText) {
+// 	return function (name) {
+// 		console.log(`${greetingText} ${name}`);
+// 	};
+// };
+
+// const hi = greet("Hi");
+// hi("Jack");
+// hi("Diana");
+// hi("Nikita");
+
+// greet("Hey")("Lily");
+
+// // greet1() =>
+// const greet1 = (greetingText1) => (name1) =>
+// 	console.log(`${greetingText1} ${name1}`);
+
+// greet1("Hello")("Sam");
 
 /************************************************************************* */
 
