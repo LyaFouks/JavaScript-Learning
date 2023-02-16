@@ -4,34 +4,56 @@
 
 /************************************************************************* */
 /************************************************************************* */
+
+// RETURNING FUNCTIONS
+
+const greet = function (greetingText) {
+	return function (name) {
+		console.log(`${greetingText} ${name}`);
+	};
+};
+
+const hi = greet("Hi");
+hi("Jack");
+hi("Diana");
+hi("Nikita");
+
+greet("Hey")("Lily");
+
+// greet1() =>
+const greet1 = (greetingText1) => (name1) =>
+	console.log(`${greetingText1} ${name1}`);
+
+greet1("Hello")("Sam");
+
 /************************************************************************* */
 
-// FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
+// // FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
 
-const removeSpaces = function (text) {
-	return text.replace(/ /g, "").toLowerCase();
-};
+// const removeSpaces = function (text) {
+// 	return text.replace(/ /g, "").toLowerCase();
+// };
 
-const upperFirstWord = function (text) {
-	const [first, ...others] = text.split(" ");
-	return [first.toUpperCase(), ...others].join(" ");
-};
+// const upperFirstWord = function (text) {
+// 	const [first, ...others] = text.split(" ");
+// 	return [first.toUpperCase(), ...others].join(" ");
+// };
 
-// High-Order function
-const converter = function (str, func) {
-	console.log(`The original text: ${str}`);
-	console.log(`The converted text: ${func(str)}`);
+// // High-Order function
+// const converter = function (str, func) {
+// 	console.log(`The original text: ${str}`);
+// 	console.log(`The converted text: ${func(str)}`);
 
-	console.log(`Converted by: ${func.name}`);
-};
+// 	console.log(`Converted by: ${func.name}`);
+// };
 
-converter("Hello to everyone!", upperFirstWord);
-converter("Hello to everyone!", removeSpaces);
+// converter("Hello to everyone!", upperFirstWord);
+// converter("Hello to everyone!", removeSpaces);
 
-// Callback functions are very common in JS
-const twice = (num) => console.log(num * 2);
+// // Callback functions are very common in JS
+// const twice = (num) => console.log(num * 2);
 
-[1, 2, 3].forEach(twice);
+// [1, 2, 3].forEach(twice);
 
 /************************************************************************* */
 
