@@ -2,106 +2,131 @@
 /************************************************************************* */
 /************************************************************************* */
 
+// IMMEDIATTELY INVOKED FUNCTION EXPRESSION (IIFE)
+
+const runOneTime = function () {
+	console.log("You will never see this function call again.");
+};
+
+// runOneTime();
+// runOneTime();
+
+(function () {
+	console.log("You will never see this function call again.");
+	const x = 1;
+	var z = 3;
+})();
+
+(() => console.log("You will never see this ARROW function call again."))();
+
+{
+	const x = 1;
+	var y = 2;
+}
+// console.log(x);
+console.log(y);
+// console.log(z);
+
 /************************************************************************* */
 
-// CALL(), APPLY() and BIND() METHODS
+// // CALL(), APPLY() and BIND() METHODS
 
-// const book = function (flightNumber, passengerName) {
-// 	console.log(
-// 		`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
-// 	);
-// 	this.bookings.push({
-// 		flight: `${this.iataCode}${flightNumber}`,
-// 		passengerName,
-// 	});
+// // const book = function (flightNumber, passengerName) {
+// // 	console.log(
+// // 		`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
+// // 	);
+// // 	this.bookings.push({
+// // 		flight: `${this.iataCode}${flightNumber}`,
+// // 		passengerName,
+// // 	});
+// // };
+
+// const airLine1 = {
+// 	airLineName: "SkyUp",
+// 	iataCode: "SU",
+// 	bookings: [],
+// 	book(flightNumber, passengerName) {
+// 		console.log(
+// 			`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
+// 		);
+// 		this.bookings.push({
+// 			flight: `${this.iataCode}${flightNumber}`,
+// 			passengerName,
+// 		});
+// 	},
 // };
 
-const airLine1 = {
-	airLineName: "SkyUp",
-	iataCode: "SU",
-	bookings: [],
-	book(flightNumber, passengerName) {
-		console.log(
-			`${passengerName} has booked a ticket on ${this.airLineName} flight ${this.iataCode}${flightNumber}`
-		);
-		this.bookings.push({
-			flight: `${this.iataCode}${flightNumber}`,
-			passengerName,
-		});
-	},
-};
+// // airLine1.book(346, "Jim DiGreez");
+// // airLine1.book(256, "Usain Bolt");
 
-// airLine1.book(346, "Jim DiGreez");
-// airLine1.book(256, "Usain Bolt");
+// // console.log(airLine1);
 
-// console.log(airLine1);
+// const airLine2 = {
+// 	airLineName: "EuroFlights",
+// 	iataCode: "EF",
+// 	bookings: [],
+// };
 
-const airLine2 = {
-	airLineName: "EuroFlights",
-	iataCode: "EF",
-	bookings: [],
-};
+// const book = airLine1.book;
 
-const book = airLine1.book;
+// // This doesn't work
+// // book(345, "Linda Lagerlyof");
 
-// This doesn't work
-// book(345, "Linda Lagerlyof");
-
-// call() Method
-book.call(airLine2, 345, "Linda Lagerlyof");
-console.log(airLine2);
-
-// book.call(airLine1, 456, "Bob Smith");
-// console.log(airLine1);
-
-// // apply() Method - old approach
-// const flightData = [111, "Nick Wong"];
-// book.apply(airLine2, flightData);
+// // call() Method
+// book.call(airLine2, 345, "Linda Lagerlyof");
 // console.log(airLine2);
 
-// book.call(airLine1, ...flightData);
-// console.log(airLine1);
+// // book.call(airLine1, 456, "Bob Smith");
+// // console.log(airLine1);
 
-// bind() Method
+// // // apply() Method - old approach
+// // const flightData = [111, "Nick Wong"];
+// // book.apply(airLine2, flightData);
+// // console.log(airLine2);
 
-const bookAirLne2 = book.bind(airLine2);
-bookAirLne2(41, "John Doe");
-console.log(airLine2);
+// // book.call(airLine1, ...flightData);
+// // console.log(airLine1);
 
-const airLine3 = {
-	airLineName: "USFlights",
-	iataCode: "USF",
-	bookings: [],
-};
+// // bind() Method
 
-const bookAirLne3 = book.bind(airLine3);
-bookAirLne3(243, "Sara Laagerlyof");
-console.log(airLine3);
+// const bookAirLne2 = book.bind(airLine2);
+// bookAirLne2(41, "John Doe");
+// console.log(airLine2);
 
-const bookAirLne3Flight21 = book.bind(airLine3, 23);
-bookAirLne3Flight21("Jack Sons");
-bookAirLne3Flight21("Lana Del Ray");
+// const airLine3 = {
+// 	airLineName: "USFlights",
+// 	iataCode: "USF",
+// 	bookings: [],
+// };
 
-// bind() with event listeners
+// const bookAirLne3 = book.bind(airLine3);
+// bookAirLne3(243, "Sara Laagerlyof");
+// console.log(airLine3);
 
-airLine1.airplanes = 200;
-airLine1.purchaseAirplane = function () {
-	console.log(this);
-	this.airplanes++;
-	console.log(this.airplanes);
-};
+// const bookAirLne3Flight21 = book.bind(airLine3, 23);
+// bookAirLne3Flight21("Jack Sons");
+// bookAirLne3Flight21("Lana Del Ray");
 
-// airLine1.purchaseAirplane();
+// // bind() with event listeners
 
-document
-	.querySelector("#purchase")
-	.addEventListener("click", airLine1.purchaseAirplane.bind(airLine1));
+// airLine1.airplanes = 200;
+// airLine1.purchaseAirplane = function () {
+// 	console.log(this);
+// 	this.airplanes++;
+// 	console.log(this.airplanes);
+// };
 
-// Partial application
-const getPercentage = (totalValue, value) => (value / totalValue) * 100;
-console.log(getPercentage(20, 23739));
-const getPercentage23739 = getPercentage.bind(null, 23739);
-console.log(getPercentage23739(100));
+// // airLine1.purchaseAirplane();
+
+// document
+// 	.querySelector("#purchase")
+// 	.addEventListener("click", airLine1.purchaseAirplane.bind(airLine1));
+
+// // Partial application
+// const getPercentage = (totalValue, value) => (value / totalValue) * 100;
+// console.log(getPercentage(20, 23739));
+// const getPercentage23739 = getPercentage.bind(null, 23739);
+// console.log(getPercentage23739(100));
 
 /************************************************************************* */
 
