@@ -1,31 +1,87 @@
 "use strict";
 /************************************************************************* */
-/************************************************************************* */
 
-// IMMEDIATTELY INVOKED FUNCTION EXPRESSION (IIFE)
+// CLOSURES (Замыкание)
 
-const runOneTime = function () {
-	console.log("You will never see this function call again.");
+const safeBooking = function () {
+	let passengerCount = 0;
+
+	return function () {
+		passengerCount++;
+		console.log(`${passengerCount} passengers`);
+	};
 };
 
-// runOneTime();
-// runOneTime();
+const booker = safeBooking();
 
-(function () {
-	console.log("You will never see this function call again.");
-	const x = 1;
-	var z = 3;
-})();
+booker();
+booker();
+booker();
+console.dir(booker);
 
-(() => console.log("You will never see this ARROW function call again."))();
+// // Example 1
+// let f1;
+// const f2 = function () {
+// 	const x = 11;
+// 	f1 = function () {
+// 		console.log(x ** 2);
+// 	};
+// };
 
-{
-	const x = 1;
-	var y = 2;
-}
-// console.log(x);
-console.log(y);
-// console.log(z);
+// const f3 = function () {
+// 	const y = 12;
+// 	f1 = function () {
+// 		console.log(y ** 2);
+// 	};
+// };
+
+// f2();
+// f1();
+// f3();
+// f1();
+// console.dir(f1);
+
+// Example 2
+const boardPassengers = function (passengerNumber, secondsBeforeBoarding) {
+	const passengerInGroup = passengerNumber / 2;
+
+	setTimeout(function () {
+		console.log(`All ${passengerNumber} passengers are now boarding`);
+		console.log(`Each group contains ${passengerInGroup} passengers`);
+	}, secondsBeforeBoarding * 1000);
+
+	console.log(`The boarding will start in ${secondsBeforeBoarding} seconds`);
+};
+
+const passengerInGroup = 1500;
+boardPassengers(150, 5);
+
+/************************************************************************* */
+
+// // IMMEDIATTELY INVOKED FUNCTION EXPRESSION (IIFE)
+
+// const runOneTime = function () {
+// 	console.log("You will never see this function call again.");
+// };
+
+// // runOneTime();
+// // runOneTime();
+
+// (function () {
+// 	console.log("You will never see this function call again.");
+// 	const x = 1;
+// 	var z = 3;
+// })();
+
+// (() => console.log("You will never see this ARROW function call again."))();
+
+// {
+// 	const x = 1;
+// 	var y = 2;
+// }
+// // console.log(x);
+// console.log(y);
+// // console.log(z);
 
 /************************************************************************* */
 
