@@ -1,10 +1,10 @@
 "use strict";
 
-const currencies = new Map([
-	["USD", "United States dollar"],
-	["EUR", "Euro"],
-	["CNY", "Chinese yuan"],
-]);
+// const currencies = new Map([
+// 	["USD", "United States dollar"],
+// 	["EUR", "Euro"],
+// 	["CNY", "Chinese yuan"],
+// ]);
 
 // const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 //////////////////////////////////////////////////////////////////////////
@@ -18,41 +18,64 @@ const currencies = new Map([
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+// forEach WITH MAP AND SET
+
+// Map
+const currencies = new Map([
+	["USD", "United States dollar"],
+	["EUR", "Euro"],
+	["CNY", "Chinese yuan"],
+]);
+
+currencies.forEach(function (value, key, map) {
+	console.log(`${key}: ${value}`);
+});
+
+// Set
+const uniqueCurrencies = new Set(["USD", "EUR", "USD", "CNY", "CNY"]);
+console.log(uniqueCurrencies);
+
+uniqueCurrencies.forEach(function (value, _, set) {
+	console.log(`${value}: ${value}`);
+	console.log(set);
+});
+
 //////////////////////////////////////////////////////////////////////////
 
-// ITERATING ARRAY WITH forEach() CYCLE
+// // ITERATING ARRAY WITH forEach() CYCLE
 
-const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
+// const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-// for (const transaction of transactions) {
+// // for (const transaction of transactions) {
+// // 	if (transaction > 0) {
+// // 		console.log(`${transaction} was deposited`);
+// // 	} else {
+// // 		console.log(`${Math.abs(transaction)} was withdrew`);
+// // 	}
+// // }
+
+// for (const [i, transaction] of transactions.entries()) {
 // 	if (transaction > 0) {
 // 		console.log(`${transaction} was deposited`);
+// 		console.log(i);
 // 	} else {
 // 		console.log(`${Math.abs(transaction)} was withdrew`);
+// 		console.log(i);
 // 	}
 // }
 
-for (const [i, transaction] of transactions.entries()) {
-	if (transaction > 0) {
-		console.log(`${transaction} was deposited`);
-		console.log(i);
-	} else {
-		console.log(`${Math.abs(transaction)} was withdrew`);
-		console.log(i);
-	}
-}
+// console.log("---------------------------------------------");
 
-console.log("---------------------------------------------");
-
-transactions.forEach(function (transaction, index /*, array*/) {
-	if (transaction > 0) {
-		console.log(`Transaction № ${index + 1}: ${transaction} was deposited`);
-	} else {
-		console.log(
-			`Transaction № ${index + 1}: ${Math.abs(transaction)} was withdrew`
-		);
-	}
-});
+// transactions.forEach(function (transaction, index /*, array*/) {
+// 	if (transaction > 0) {
+// 		console.log(`Transaction № ${index + 1}: ${transaction} was deposited`);
+// 	} else {
+// 		console.log(
+// 			`Transaction № ${index + 1}: ${Math.abs(transaction)} was withdrew`
+// 		);
+// 	}
+// });
 
 //////////////////////////////////////////////////////////////////////////
 
