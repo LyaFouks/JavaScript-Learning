@@ -16,53 +16,77 @@
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
 
-// map() METHOD  // Does not change the original array, returns a new array
+// filter() METHOD  // Does not change the original array, returns a new array
 
 const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-const usdToEuro = 0.93;
+const withdrawals = transactions.filter(function (trans) {
+	return trans < 0;
+});
 
-// const transactionsEuro = transactions.map(function (trans) {
-// 	return trans * usdToEuro;
-// });
+console.log(withdrawals);
 
-const transactionsEuro = transactions.map((trans) => trans * usdToEuro);
+const withdrawal1 = [];
 
-console.log(transactions);
-console.log(transactionsEuro);
-
-const transactionsEuro1 = [];
 for (const trans of transactions) {
-	transactionsEuro1.push(trans * usdToEuro);
+	if (trans < 0) {
+		withdrawal1.push(trans);
+	}
 }
 
-console.log(transactionsEuro1);
+console.log(withdrawal1);
+
+const deposites = transactions.filter((trans) => trans > 0);
+console.log(deposites);
+
+//////////////////////////////////////////////////////////////////////////
+
+// // map() METHOD  // Does not change the original array, returns a new array
+
+// const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
+
+// const usdToEuro = 0.93;
+
+// // const transactionsEuro = transactions.map(function (trans) {
+// // 	return trans * usdToEuro;
+// // });
+
+// const transactionsEuro = transactions.map((trans) => trans * usdToEuro);
+
+// console.log(transactions);
+// console.log(transactionsEuro);
+
+// const transactionsEuro1 = [];
+// for (const trans of transactions) {
+// 	transactionsEuro1.push(trans * usdToEuro);
+// }
+
+// console.log(transactionsEuro1);
+
+// // const transactionDescriptions = transactions.map(
+// // 	(transaction, index) => {
+// // 		let description = "";
+
+// // 		if (transaction > 0) {
+// // 			description = `Transaction № ${index + 1}: ${transaction} was deposited`;
+// // 		} else {
+// // 			description = `Transaction № ${index + 1}: ${Math.abs(
+// // 				transaction
+// // 			)} was withdrew`;
+// // 		}
+// // 		return description;
+// // 	}
+// // );
 
 // const transactionDescriptions = transactions.map(
-// 	(transaction, index) => {
-// 		let description = "";
-
-// 		if (transaction > 0) {
-// 			description = `Transaction № ${index + 1}: ${transaction} was deposited`;
-// 		} else {
-// 			description = `Transaction № ${index + 1}: ${Math.abs(
-// 				transaction
-// 			)} was withdrew`;
-// 		}
-// 		return description;
-// 	}
+// 	(transaction, index) =>
+// 		`Transaction № ${index + 1}: ${Math.abs(transaction)} was ${
+// 			transaction > 0 ? "deposited" : "withdrew"
+// 		}`
 // );
 
-const transactionDescriptions = transactions.map(
-	(transaction, index) =>
-		`Transaction № ${index + 1}: ${Math.abs(transaction)} was ${
-			transaction > 0 ? "deposited" : "withdrew"
-		}`
-);
-
-console.log(transactionDescriptions);
+// console.log(transactionDescriptions);
 
 //////////////////////////////////////////////////////////////////////////
 
