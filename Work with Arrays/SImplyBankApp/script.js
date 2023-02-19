@@ -65,6 +65,8 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+/////////////////////////////////////////////////////////////////////////
+
 // Creating DOM elements
 
 const displayTransactions = function (transactions) {
@@ -88,3 +90,31 @@ const displayTransactions = function (transactions) {
 displayTransactions(account1.transactions);
 
 // console.log(containerTransactions.innerHTML);
+
+/////////////////////////////////////////////////////////////////////////
+
+// Calculating NickNames
+
+const createNickNames = function (accs) {
+	accs.forEach(function (acc) {
+		acc.nickName = acc.userName
+			.toLowerCase()
+			.split(" ")
+			.map((word) => word[0])
+			.join("");
+	});
+};
+
+createNickNames(accounts);
+
+console.log(accounts);
+
+// const userName = "Oliver Avila"; // nickName = 'oa';
+
+// const nickName = userName
+// 	.toLowerCase()
+// 	.split(" ")
+// 	.map((word) => word[0])
+// 	.join("");
+
+// console.log(nickName);
