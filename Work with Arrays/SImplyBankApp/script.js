@@ -87,13 +87,11 @@ const displayTransactions = function (transactions) {
 	});
 };
 
-displayTransactions(account1.transactions);
-
 // console.log(containerTransactions.innerHTML);
 
 /////////////////////////////////////////////////////////////////////////
 
-// Calculating NickNames
+// Calculating NickNames (Using Array Nethods: map() etc.)
 
 const createNickNames = function (accs) {
 	accs.forEach(function (acc) {
@@ -121,39 +119,73 @@ console.log(accounts);
 
 /////////////////////////////////////////////////////////////////////////
 
-// Display balance in App
+// Display balance in App (Using reduce() Method)
 
 const displayBalance = function (transactions) {
 	const balance = transactions.reduce((acc, trans) => acc + trans, 0);
 	labelBalance.textContent = `${balance}$`;
 };
 
-displayBalance(account1.transactions);
-
 /////////////////////////////////////////////////////////////////////////
 
-// Method Chaining
+// Display Total (Using Method Chaining)
 
-const displayTotal = function (transactions) {
-	const depositesTotal = transactions
+const displayTotal = function (account) {
+	const depositesTotal = account.transactions
 		.filter((trans) => trans > 0)
 		.reduce((acc, trans) => acc + trans, 0);
 	labelSumIn.textContent = `${depositesTotal}$`;
 
-	const withdrawsTotal = transactions
+	const withdrawsTotal = account.transactions
 		.filter((trans) => trans < 0)
 		.reduce((acc, trans) => acc + trans, 0);
 	labelSumOut.textContent = `${withdrawsTotal}$`;
 
-	const interestTotal = transactions
+	const interestTotal = account.transactions
 		.filter((trans) => trans > 0)
-		.map((depos) => (depos * 1.1) / 100)
+		.map((depos) => (depos * account.interest) / 100)
 		.filter((interest, index, arr) => {
 			console.log(arr);
 			return interest >= 5;
 		})
 		.reduce((acc, interest) => acc + interest, 0);
-	labelSumInterest.textContent = `${interestTotal}$`;
+	labelSumInterest.textContent = `${interestTotal.toFixed(2)}$`;
 };
 
-const withdrawsTotal = displayTotal(account1.transactions);
+/////////////////////////////////////////////////////////////////////////
+
+// Login implementation (Using find() Method)
+
+let currentAccount;
+
+btnLogin.addEventListener("click", function (e) {
+	e.preventDefault();
+	currentAccount = accounts.find(
+		(account) => account.nickName === inputLoginUsername.value
+	);
+
+	console.log(currentAccount);
+
+	if (currentAccount?.pin === Number(inputLoginPin.value)) {
+		// Display UI and welcome message
+		containerApp.style.opacity = 100;
+
+		labelWelcome.textContent = `We are glad, that you are with us again, ${
+			currentAccount.userName.split(" ")[0]
+		}!`;
+
+		// Clear inputs
+		inputLoginUsername.value = "";
+		inputLoginPin.value = "";
+		inputLoginPin.blur();
+
+		// Display transactions
+		displayTransactions(currentAccount.transactions);
+
+		// Display balance
+		displayBalance(currentAccount.transactions);
+
+		// Display total
+		displayTotal(currentAccount);
+	}
+});
