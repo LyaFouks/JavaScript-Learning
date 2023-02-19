@@ -13,44 +13,60 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
 
-// reduce() METHOD  // Does not change the original array, returns a new array
+// METHOD CHAINING (Цепь Возовов Методов)
 
 const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-// const balance = transactions.reduce(function (acc, item, index, array) {
-// 	console.log(acc);
-// 	return acc + item;
-// }, 0);
+const totalWithdrawsInEuro = transactions
+	.filter((trans) => trans < 0)
+	.map((trans, index, array) => {
+		// console.log(array);
+		return trans * 0.93;
+	})
+	// .map((trans) => trans * 0.93)
+	.reduce((acc, trans) => acc + trans, 0);
 
-const balance = transactions.reduce((acc, item) => acc + item, 0);
-console.log(balance);
+console.log(totalWithdrawsInEuro);
 
-console.log("*******************************************************");
+//////////////////////////////////////////////////////////////////////////
 
-let sum = 0;
-for (const trans of transactions) {
-	sum += trans;
-}
-console.log(sum);
+// // reduce() METHOD  // Does not change the original array, returns a new array
 
-// Get minimum value of transactions
+// const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-// const min = transactions.reduce((acc, trans) => {
-// 	if (acc < trans) {
-// 		return acc;
-// 	} else {
-// 		return trans;
-// 	}
-// }, transactions[0]);
+// // const balance = transactions.reduce(function (acc, item, index, array) {
+// // 	console.log(acc);
+// // 	return acc + item;
+// // }, 0);
 
-const min = transactions.reduce(
-	(acc, trans) => (acc < trans ? acc : trans),
-	transactions[0]
-);
+// const balance = transactions.reduce((acc, item) => acc + item, 0);
+// console.log(balance);
 
-console.log(min);
+// console.log("*******************************************************");
+
+// let sum = 0;
+// for (const trans of transactions) {
+// 	sum += trans;
+// }
+// console.log(sum);
+
+// // Get minimum value of transactions
+
+// // const min = transactions.reduce((acc, trans) => {
+// // 	if (acc < trans) {
+// // 		return acc;
+// // 	} else {
+// // 		return trans;
+// // 	}
+// // }, transactions[0]);
+
+// const min = transactions.reduce(
+// 	(acc, trans) => (acc < trans ? acc : trans),
+// 	transactions[0]
+// );
+
+// console.log(min);
 
 //////////////////////////////////////////////////////////////////////////
 
