@@ -15,30 +15,67 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////
-
-// filter() METHOD  // Does not change the original array, returns a new array
+// reduce() METHOD  // Does not change the original array, returns a new array
 
 const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-const withdrawals = transactions.filter(function (trans) {
-	return trans < 0;
-});
+// const balance = transactions.reduce(function (acc, item, index, array) {
+// 	console.log(acc);
+// 	return acc + item;
+// }, 0);
 
-console.log(withdrawals);
+const balance = transactions.reduce((acc, item) => acc + item, 0);
+console.log(balance);
 
-const withdrawal1 = [];
+console.log("*******************************************************");
 
+let sum = 0;
 for (const trans of transactions) {
-	if (trans < 0) {
-		withdrawal1.push(trans);
-	}
+	sum += trans;
 }
+console.log(sum);
 
-console.log(withdrawal1);
+// Get minimum value of transactions
 
-const deposites = transactions.filter((trans) => trans > 0);
-console.log(deposites);
+// const min = transactions.reduce((acc, trans) => {
+// 	if (acc < trans) {
+// 		return acc;
+// 	} else {
+// 		return trans;
+// 	}
+// }, transactions[0]);
+
+const min = transactions.reduce(
+	(acc, trans) => (acc < trans ? acc : trans),
+	transactions[0]
+);
+
+console.log(min);
+
+//////////////////////////////////////////////////////////////////////////
+
+// // filter() METHOD  // Does not change the original array, returns a new array
+
+// const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
+
+// const withdrawals = transactions.filter(function (trans) {
+// 	return trans < 0;
+// });
+
+// console.log(withdrawals);
+
+// const withdrawal1 = [];
+
+// for (const trans of transactions) {
+// 	if (trans < 0) {
+// 		withdrawal1.push(trans);
+// 	}
+// }
+
+// console.log(withdrawal1);
+
+// const deposites = transactions.filter((trans) => trans > 0);
+// console.log(deposites);
 
 //////////////////////////////////////////////////////////////////////////
 
