@@ -105,7 +105,7 @@ const createNickNames = function (accs) {
 
 createNickNames(accounts);
 
-console.log(accounts);
+// console.log(accounts);
 
 // const userName = "Oliver Avila"; // nickName = 'oa';
 
@@ -121,8 +121,9 @@ console.log(accounts);
 
 // Display balance in App (Using reduce() Method)
 
-const displayBalance = function (transactions) {
-	const balance = transactions.reduce((acc, trans) => acc + trans, 0);
+const displayBalance = function (account) {
+	const balance = account.transactions.reduce((acc, trans) => acc + trans, 0);
+	account.balance = balance;
 	labelBalance.textContent = `${balance}$`;
 };
 
@@ -145,7 +146,7 @@ const displayTotal = function (account) {
 		.filter((trans) => trans > 0)
 		.map((depos) => (depos * account.interest) / 100)
 		.filter((interest, index, arr) => {
-			console.log(arr);
+			// console.log(arr);
 			return interest >= 5;
 		})
 		.reduce((acc, interest) => acc + interest, 0);
@@ -156,6 +157,17 @@ const displayTotal = function (account) {
 
 // Login implementation (Using find() Method)
 
+const updateUI = function (account) {
+	// Display transactions
+	displayTransactions(account.transactions);
+
+	// Display balance
+	displayBalance(account);
+
+	// Display total
+	displayTotal(account);
+};
+
 let currentAccount;
 
 btnLogin.addEventListener("click", function (e) {
@@ -164,7 +176,7 @@ btnLogin.addEventListener("click", function (e) {
 		(account) => account.nickName === inputLoginUsername.value
 	);
 
-	console.log(currentAccount);
+	// console.log(currentAccount);
 
 	if (currentAccount?.pin === Number(inputLoginPin.value)) {
 		// Display UI and welcome message
@@ -179,13 +191,33 @@ btnLogin.addEventListener("click", function (e) {
 		inputLoginPin.value = "";
 		inputLoginPin.blur();
 
-		// Display transactions
-		displayTransactions(currentAccount.transactions);
+		updateUI(currentAccount);
+	}
+});
 
-		// Display balance
-		displayBalance(currentAccount.transactions);
+/////////////////////////////////////////////////////////////////////////
 
-		// Display total
-		displayTotal(currentAccount);
+// Transfer implementation
+
+btnTransfer.addEventListener("click", function (e) {
+	e.preventDefault();
+	const transferAmount = Number(inputTransferAmount.value);
+	const recipientNickName = inputTransferTo.value;
+	const recipientAccount = accounts.find(
+		(account) => account.nickName === recipientNickName
+	);
+	inputTransferTo.value = "";
+	inputTransferAmount.value = "";
+
+	if (
+		transferAmount > 0 &&
+		currentAccount.balance >= transferAmount &&
+		recipientAccount &&
+		currentAccount.nickName !== recipientAccount.nickName
+	) {
+		currentAccount.transactions.push(-transferAmount);
+		recipientAccount.transactions.push(transferAmount);
+		console.log("Transfer");
+		updateUI(currentAccount);
 	}
 });
