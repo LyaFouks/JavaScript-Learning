@@ -8,48 +8,76 @@
 
 // const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 //////////////////////////////////////////////////////////////////////////
+
+// OTHER WAYS TO CREATE AND POPULATE ARRAYS
+
+// Empty Arrays
+console.log([1, 2, 3]);
+console.log(new Array(1, 2, 3));
+
+const arr = new Array(3);
+console.log(arr);
+// console.log(arr.map(() => 7));
+
+// fill() Method
+// arr.fill(7);
+// arr.fill(7, 1);
+arr.fill(7, 1, 2);
+console.log(arr);
+
+const arr1 = [1, 1, 1, 1, 1];
+arr1.fill(3, 2, 4);
+console.log(arr1);
+
+// Array.from() Method
+const arr2 = Array.from({ length: 5 }, () => 1);
+console.log(arr2);
+
+const arr3 = Array.from({ length: 5 }, (_, index) => index + 1);
+console.log(arr3);
+
 //////////////////////////////////////////////////////////////////////////
 
-// ARRAYS SORTING (sort() METHOD)  // Change the original array
+// // ARRAYS SORTING (sort() METHOD)  // Change the original array
 
-// Strings
-const names = ["John", "Sara", "Steve", "Evan", "Cecil"];
-console.log(names.sort());
-console.log(names);
+// // Strings
+// const names = ["John", "Sara", "Steve", "Evan", "Cecil"];
+// console.log(names.sort());
+// console.log(names);
 
-// Numbers
-const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
+// // Numbers
+// const transactions = [300, 250, -500, 5000, -750, -100, 50, 1400, -350, -120];
 
-// Return < 0 -> x, y
-// Return > 0 -> y, x
+// // Return < 0 -> x, y
+// // Return > 0 -> y, x
 
-// Ascending order
-// transactions.sort((x, y) => {
-// 	if (x > y) {
-// 		return 1;
-// 	}
-// 	if (x < y) {
-// 		return -1;
-// 	}
-// });
+// // Ascending order
+// // transactions.sort((x, y) => {
+// // 	if (x > y) {
+// // 		return 1;
+// // 	}
+// // 	if (x < y) {
+// // 		return -1;
+// // 	}
+// // });
 
-transactions.sort((x, y) => x - y);
+// transactions.sort((x, y) => x - y);
 
-console.log(transactions);
+// console.log(transactions);
 
-// Descending order
-// transactions.sort((x, y) => {
-// 	if (x > y) {
-// 		return -1;
-// 	}
-// 	if (x < y) {
-// 		return 1;
-// 	}
-// });
+// // Descending order
+// // transactions.sort((x, y) => {
+// // 	if (x > y) {
+// // 		return -1;
+// // 	}
+// // 	if (x < y) {
+// // 		return 1;
+// // 	}
+// // });
 
-transactions.sort((x, y) => y - x);
+// transactions.sort((x, y) => y - x);
 
-console.log(transactions);
+// console.log(transactions);
 
 //////////////////////////////////////////////////////////////////////////
 
