@@ -62,7 +62,7 @@ const inputLoginPin = document.querySelector(".login__input--pin");
 const inputTransferTo = document.querySelector(".form__input--to");
 const inputTransferAmount = document.querySelector(".form__input--amount");
 const inputLoanAmount = document.querySelector(".form__input--loan-amount");
-const inputCloseUsername = document.querySelector(".form__input--user");
+const inputCloseNickName = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 /////////////////////////////////////////////////////////////////////////
@@ -170,6 +170,8 @@ const updateUI = function (account) {
 
 let currentAccount;
 
+// Event Handlers
+
 btnLogin.addEventListener("click", function (e) {
 	e.preventDefault();
 	currentAccount = accounts.find(
@@ -220,4 +222,27 @@ btnTransfer.addEventListener("click", function (e) {
 		console.log("Transfer");
 		updateUI(currentAccount);
 	}
+});
+
+/////////////////////////////////////////////////////////////////////////
+
+// Account Closure implementation
+
+btnClose.addEventListener("click", function (e) {
+	e.preventDefault();
+	if (
+		inputCloseNickName.value === currentAccount.nickName &&
+		Number(inputClosePin.value) === currentAccount.pin
+	) {
+		const currentAccountIndex = accounts.findIndex(
+			(account) => account.nickName === currentAccount.nickName
+		);
+		accounts.splice(currentAccount, 1);
+
+		containerApp.style.opacity = 0;
+	}
+
+	inputCloseNickName.value = "";
+	inputClosePin.value = "";
+	labelWelcome.textContent = "Войдите в свой аккаунт";
 });
