@@ -281,3 +281,19 @@ btnSort.addEventListener("click", function (e) {
 	displayTransactions(currentAccount.transactions, !transactionsSorted);
 	transactionsSorted = !transactionsSorted;
 });
+
+//////////////////////////////////////////////////////////////////////////
+
+// Array.from() example
+
+const logoImage = document.querySelector(".logo");
+logoImage.addEventListener("click", function () {
+	const transactionsUI = document.querySelectorAll(".transactions__value");
+	console.log(transactionsUI);
+	// const transactionsUIArray = Array.from(transactionsUI);
+	// console.log(transactionsUIArray.map((elem) => Number(elem.textContent)));
+	const transactionsUIArray = Array.from(transactionsUI, (elem) =>
+		Number(elem.textContent)
+	);
+	console.log(transactionsUIArray);
+});
