@@ -69,10 +69,14 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 // Creating DOM elements
 
-const displayTransactions = function (transactions) {
+const displayTransactions = function (transactions, sort = false) {
 	containerTransactions.innerHTML = "";
 
-	transactions.forEach(function (trans, index) {
+	const transacts = sort
+		? transactions.slice().sort((x, y) => x - y)
+		: transactions;
+
+	transacts.forEach(function (trans, index) {
 		const transType = trans > 0 ? "deposit" : "withdrawal";
 
 		const transactionRow = `
@@ -264,4 +268,16 @@ btnLoan.addEventListener("click", function (e) {
 		updateUI(currentAccount);
 	}
 	inputLoanAmount.value = "";
+});
+
+/////////////////////////////////////////////////////////////////////////
+
+// Transactions sorting (sort() Method)
+
+let transactionsSorted = false;
+
+btnSort.addEventListener("click", function (e) {
+	e.preventDefault();
+	displayTransactions(currentAccount.transactions, !transactionsSorted);
+	transactionsSorted = !transactionsSorted;
 });
