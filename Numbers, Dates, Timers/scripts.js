@@ -5,41 +5,60 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+// REMAINDER OPERATOR
+
+console.log(7 % 3); // 7 = 3 * 2 + 1
+console.log(7 % 3); // 7 = 4 * 1 + 3
+
+console.log(8 % 2);
+console.log(108 % 2);
+console.log(8564 % 2);
+
+console.log(9 % 2);
+console.log(109 % 2);
+console.log(751 % 2);
+
+const isNumberOdd = (x) => x % 2 !== 0;
+console.log(isNumberOdd(5));
+console.log(isNumberOdd(7));
+console.log(isNumberOdd(10));
+console.log(isNumberOdd(16));
 //////////////////////////////////////////////////////////////////////////
 
-// WORK with Math
+// // WORK with Math
 
-console.log(Math.sqrt(9));
-console.log(9 ** (1 / 2));
-console.log(8 ** (1 / 3));
+// console.log(Math.sqrt(9));
+// console.log(9 ** (1 / 2));
+// console.log(8 ** (1 / 3));
 
-console.log(Math.max(3, 54, 555, 12, 4, 15));
-console.log(Math.max(3, 54, "11", 555, "12", 4, 15));
-console.log(Math.max(3, 54, "11%", 555, "12%", 4, 15));
-console.log(Math.min(3, 54, 11, 555, 12, 4, 15));
+// console.log(Math.max(3, 54, 555, 12, 4, 15));
+// console.log(Math.max(3, 54, "11", 555, "12", 4, 15));
+// console.log(Math.max(3, 54, "11%", 555, "12%", 4, 15));
+// console.log(Math.min(3, 54, 11, 555, 12, 4, 15));
 
-console.log(Math.PI);
-console.log(Math.PI * Number.parseInt("20px") ** 2);
+// console.log(Math.PI);
+// console.log(Math.PI * Number.parseInt("20px") ** 2);
 
-console.log(Math.trunc(Math.random() * 100));
+// console.log(Math.trunc(Math.random() * 100));
 
-console.log(Math.trunc(1.99));
+// console.log(Math.trunc(1.99));
 
-console.log(Math.round(1.99));
-console.log(Math.round(1.39));
+// console.log(Math.round(1.99));
+// console.log(Math.round(1.39));
 
-console.log(Math.ceil(1.99));
-console.log(Math.ceil(1.39));
+// console.log(Math.ceil(1.99));
+// console.log(Math.ceil(1.39));
 
-console.log(Math.floor(1.99));
-console.log(Math.floor(1.39));
+// console.log(Math.floor(1.99));
+// console.log(Math.floor(1.39));
 
-console.log(Math.trunc(-1.11));
-console.log(Math.floor(-1.11));
+// console.log(Math.trunc(-1.11));
+// console.log(Math.floor(-1.11));
 
-console.log(Math.PI);
-console.log(Math.PI.toFixed(2));
-console.log(+(1.34567).toFixed(2));
+// console.log(Math.PI);
+// console.log(Math.PI.toFixed(2));
+// console.log(+(1.34567).toFixed(2));
 
 //////////////////////////////////////////////////////////////////////////
 
