@@ -284,17 +284,33 @@ btnSort.addEventListener("click", function (e) {
 
 //////////////////////////////////////////////////////////////////////////
 
-// Array.from() example
+// // Array.from() example
+
+// const logoImage = document.querySelector(".logo");
+// logoImage.addEventListener("click", function () {
+// 	const transactionsUI = document.querySelectorAll(".transactions__value");
+// 	console.log(transactionsUI);
+// 	// const transactionsUIArray = Array.from(transactionsUI);
+// 	// console.log(transactionsUIArray.map((elem) => +(elem.textContent)));
+// 	const transactionsUIArray = Array.from(
+// 		transactionsUI,
+// 		(elem) => +elem.textContent
+// 	);
+// 	console.log(transactionsUIArray);
+// });
+
+//////////////////////////////////////////////////////////////////////////
+
+// Remainder Operator
 
 const logoImage = document.querySelector(".logo");
 logoImage.addEventListener("click", function () {
-	const transactionsUI = document.querySelectorAll(".transactions__value");
-	console.log(transactionsUI);
-	// const transactionsUIArray = Array.from(transactionsUI);
-	// console.log(transactionsUIArray.map((elem) => +(elem.textContent)));
-	const transactionsUIArray = Array.from(
-		transactionsUI,
-		(elem) => +elem.textContent
-	);
-	console.log(transactionsUIArray);
+	[...document.querySelectorAll(".transactions__row")].forEach(function (
+		row,
+		index
+	) {
+		if (index % 2 === 0) {
+			row.style.backgroundColor = "grey";
+		}
+	});
 });
