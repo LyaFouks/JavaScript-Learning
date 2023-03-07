@@ -70,9 +70,6 @@ const account4 = {
 		"2020-11-15T10:45:23.907Z",
 		"2021-01-22T12:17:46.255Z",
 		"2021-02-12T15:14:06.486Z",
-		"2021-03-09T11:42:26.371Z",
-		"2021-05-21T07:43:59.331Z",
-		"2021-06-22T15:21:20.814Z",
 	],
 	currency: "EUR",
 	locale: "fr-CA",
@@ -89,9 +86,6 @@ const account5 = {
 		"2020-11-15T10:45:23.907Z",
 		"2021-01-22T12:17:46.255Z",
 		"2021-02-12T15:14:06.486Z",
-		"2021-03-09T11:42:26.371Z",
-		"2021-05-21T07:43:59.331Z",
-		"2021-06-22T15:21:20.814Z",
 	],
 	currency: "USD",
 	locale: "en-US",
@@ -129,21 +123,30 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 // Creating DOM elements
 
-const displayTransactions = function (transactions, sort = false) {
+const displayTransactions = function (account, sort = false) {
 	containerTransactions.innerHTML = "";
 
 	const transacts = sort
-		? transactions.slice().sort((x, y) => x - y)
-		: transactions;
+		? account.transactions.slice().sort((x, y) => x - y)
+		: account.transactions;
 
 	transacts.forEach(function (trans, index) {
 		const transType = trans > 0 ? "deposit" : "withdrawal";
+
+		const date = new Date(account.transactionsDates[index]);
+
+		const day = `${date.getDate()}`.padStart(2, "0");
+		const month = `${date.getMonth() + 1}`.padStart(2, "0");
+		const year = date.getFullYear();
+
+		const transDate = `${day}/${month}/${year}`;
 
 		const transactionRow = `
     <div class="transactions__row">
       <div class="transactions__type transactions__type--${transType}">
           ${index + 1} ${transType}
       </div>
+	  <div class="transactions__date">${transDate}</div>
       <div class="transactions__value">${trans.toFixed(2)}</div>
     </div>
     `;
@@ -223,7 +226,7 @@ const displayTotal = function (account) {
 
 const updateUI = function (account) {
 	// Display transactions
-	displayTransactions(account.transactions);
+	displayTransactions(account);
 
 	// Display balance
 	displayBalance(account);
@@ -233,6 +236,12 @@ const updateUI = function (account) {
 };
 
 let currentAccount;
+
+// Always Logged In
+
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // Event Handlers
 
@@ -251,6 +260,13 @@ btnLogin.addEventListener("click", function (e) {
 		labelWelcome.textContent = `We are glad, that you are with us again, ${
 			currentAccount.userName.split(" ")[0]
 		}!`;
+
+		const now = new Date();
+		const day = `${now.getDate()}`.padStart(2, "0");
+		const month = `${now.getMonth() + 1}`.padStart(2, "0");
+		const year = now.getFullYear();
+
+		labelDate.textContent = `${day}/${month}/${year}`;
 
 		// Clear inputs
 		inputLoginUsername.value = "";
@@ -281,9 +297,14 @@ btnTransfer.addEventListener("click", function (e) {
 		recipientAccount &&
 		currentAccount.nickName !== recipientAccount.nickName
 	) {
+		// Add Transaction
 		currentAccount.transactions.push(-transferAmount);
 		recipientAccount.transactions.push(transferAmount);
-		console.log("Transfer");
+
+		// Add transaction date
+		currentAccount.transactionsDates.push(new Date().toISOString());
+		recipientAccount.transactionsDates.push(new Date().toISOString());
+
 		updateUI(currentAccount);
 	}
 });
@@ -325,6 +346,7 @@ btnLoan.addEventListener("click", function (e) {
 		)
 	) {
 		currentAccount.transactions.push(loanAmount);
+		currentAccount.transactionsDates.push(new Date().toISOString());
 		updateUI(currentAccount);
 	}
 	inputLoanAmount.value = "";
@@ -338,7 +360,7 @@ let transactionsSorted = false;
 
 btnSort.addEventListener("click", function (e) {
 	e.preventDefault();
-	displayTransactions(currentAccount.transactions, !transactionsSorted);
+	displayTransactions(currentAccount, !transactionsSorted);
 	transactionsSorted = !transactionsSorted;
 });
 
