@@ -4,26 +4,68 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+// BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(2 ** 53);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+
+console.log(65918571239278352369527302n);
+console.log(BigInt("65918571239278352369527302"));
+
+console.log(65918571239278352369527302n + 65918571239278352369527302n);
+
+console.log(65918571239278352369527302n - 65918571239278352369527302n);
+
+console.log(65918571239278352369527302n * 65918571239278352369527302n);
+
+console.log(65918571239278352369527302n / 65918571239278352369527302n);
+
+console.log(65918571239278352369527302n ** 10n);
+
+const bigNumber = 65918571239278352369527302n;
+const regularNumber = 192;
+
+// console.log(Math.pow(bigNumber, 2));
+
+console.log(bigNumber * BigInt(regularNumber));
+
+console.log(65918571239278352369527302n > 123);
+
+console.log(65918571239278352369527302n === 123);
+console.log(typeof 123n);
+console.log(typeof 123);
+
+console.log(bigNumber + " this is a VERY big number!");
+
+console.log(5 / 3);
+console.log(5n / 3n);
+
 //////////////////////////////////////////////////////////////////////////
 
-// REMAINDER OPERATOR
+// // REMAINDER OPERATOR
 
-console.log(7 % 3); // 7 = 3 * 2 + 1
-console.log(7 % 3); // 7 = 4 * 1 + 3
+// console.log(7 % 3); // 7 = 3 * 2 + 1
+// console.log(7 % 3); // 7 = 4 * 1 + 3
 
-console.log(8 % 2);
-console.log(108 % 2);
-console.log(8564 % 2);
+// console.log(8 % 2);
+// console.log(108 % 2);
+// console.log(8564 % 2);
 
-console.log(9 % 2);
-console.log(109 % 2);
-console.log(751 % 2);
+// console.log(9 % 2);
+// console.log(109 % 2);
+// console.log(751 % 2);
 
-const isNumberOdd = (x) => x % 2 !== 0;
-console.log(isNumberOdd(5));
-console.log(isNumberOdd(7));
-console.log(isNumberOdd(10));
-console.log(isNumberOdd(16));
+// const isNumberOdd = (x) => x % 2 !== 0;
+// console.log(isNumberOdd(5));
+// console.log(isNumberOdd(7));
+// console.log(isNumberOdd(10));
+// console.log(isNumberOdd(16));
+
 //////////////////////////////////////////////////////////////////////////
 
 // // WORK with Math
