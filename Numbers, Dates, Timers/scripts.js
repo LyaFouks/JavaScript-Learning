@@ -2,6 +2,20 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+// OPERATIONS WITH DATES
+
+const futureDate = new Date(2222, 1, 13, 11, 28, 59);
+console.log(Number(futureDate));
+console.log(+futureDate);
+console.log(-futureDate);
+
+const getDaysBetween2Dates = (date1, date2) =>
+	Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
+
+const days = getDaysBetween2Dates(new Date(2021, 9, 1), new Date(2021, 9, 12));
+console.log(days);
+
 //////////////////////////////////////////////////////////////////////////
 
 // // WORK WITH DATES
@@ -44,25 +58,25 @@
 // console.log(new Date(1 * 24 * 60 * 60 * 1000));
 // console.log(new Date(7 * 24 * 60 * 60 * 1000));
 
-// Work with Dates using Arrays
+// // Work with Dates using Arrays
 
-const futureDate = new Date(2222, 1, 13, 11, 28, 59);
-console.log(futureDate);
-console.log(futureDate.getFullYear());
-console.log(futureDate.getMonth());
-console.log(futureDate.getDate());
-console.log(futureDate.getDay());
-console.log(futureDate.getHours());
-console.log(futureDate.getMinutes());
-console.log(futureDate.getSeconds());
-console.log(futureDate.toISOString());
-console.log(futureDate.getTime());
+// const futureDate = new Date(2222, 1, 13, 11, 28, 59);
+// console.log(futureDate);
+// console.log(futureDate.getFullYear());
+// console.log(futureDate.getMonth());
+// console.log(futureDate.getDate());
+// console.log(futureDate.getDay());
+// console.log(futureDate.getHours());
+// console.log(futureDate.getMinutes());
+// console.log(futureDate.getSeconds());
+// console.log(futureDate.toISOString());
+// console.log(futureDate.getTime());
 
-console.log(new Date(7956091739000));
-console.log(Date.now());
+// console.log(new Date(7956091739000));
+// console.log(Date.now());
 
-futureDate.setFullYear(2223);
-console.log(futureDate);
+// futureDate.setFullYear(2223);
+// console.log(futureDate);
 
 //////////////////////////////////////////////////////////////////////////
 
