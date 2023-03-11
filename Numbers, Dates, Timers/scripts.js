@@ -1,20 +1,41 @@
 "use strict";
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+// NUMBERS INERNATIONALIZATIONS
+
+const a = 3245.32;
+
+const options = {
+	style: "currency",
+	unit: "celsius",
+	currency: "USD",
+};
+
+console.log("US", new Intl.NumberFormat("en-US", options).format(a));
+
+console.log("Ukraine", new Intl.NumberFormat("uk-UA", options).format(a));
+
+console.log("Russia", new Intl.NumberFormat("ru-RU", options).format(a));
+
+console.log("Germany", new Intl.NumberFormat("de-DE", options).format(a));
+
+console.log("Syria", new Intl.NumberFormat("ar-SY", options).format(a));
+
 //////////////////////////////////////////////////////////////////////////
 
-// OPERATIONS WITH DATES
+// // OPERATIONS WITH DATES
 
-const futureDate = new Date(2222, 1, 13, 11, 28, 59);
-console.log(Number(futureDate));
-console.log(+futureDate);
-console.log(-futureDate);
+// const futureDate = new Date(2222, 1, 13, 11, 28, 59);
+// console.log(Number(futureDate));
+// console.log(+futureDate);
+// console.log(-futureDate);
 
-const getDaysBetween2Dates = (date1, date2) =>
-	Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
+// const getDaysBetween2Dates = (date1, date2) =>
+// 	Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
 
-const days = getDaysBetween2Dates(new Date(2021, 9, 1), new Date(2021, 9, 12));
-console.log(days);
+// const days = getDaysBetween2Dates(new Date(2021, 9, 1), new Date(2021, 9, 12));
+// console.log(days);
 
 //////////////////////////////////////////////////////////////////////////
 
