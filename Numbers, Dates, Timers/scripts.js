@@ -1,26 +1,48 @@
 "use strict";
+
 //////////////////////////////////////////////////////////////////////////
+
+// TIMERS
+
+// setTimeOut()
+const ingridients = ["Tuna", "Losos"];
+const sushiTimer = setTimeout(
+	(ingri1, ingri2) =>
+		console.log(`Your sushi delivered! Ingridients: ${ingri1} and ${ingri2}`),
+	3000,
+	...ingridients
+);
+console.log("Waiting...");
+
+if (ingridients.includes("Tuna fish")) clearTimeout(sushiTimer);
+
+// setInterval()
+setInterval(function () {
+	const now = new Date();
+	console.log(now);
+}, 3000);
+
 //////////////////////////////////////////////////////////////////////////
 
-// NUMBERS INERNATIONALIZATIONS
+// // NUMBERS INERNATIONALIZATIONS
 
-const a = 3245.32;
+// const a = 3245.32;
 
-const options = {
-	style: "currency",
-	unit: "celsius",
-	currency: "USD",
-};
+// const options = {
+// 	style: "currency",
+// 	unit: "celsius",
+// 	currency: "USD",
+// };
 
-console.log("US", new Intl.NumberFormat("en-US", options).format(a));
+// console.log("US", new Intl.NumberFormat("en-US", options).format(a));
 
-console.log("Ukraine", new Intl.NumberFormat("uk-UA", options).format(a));
+// console.log("Ukraine", new Intl.NumberFormat("uk-UA", options).format(a));
 
-console.log("Russia", new Intl.NumberFormat("ru-RU", options).format(a));
+// console.log("Russia", new Intl.NumberFormat("ru-RU", options).format(a));
 
-console.log("Germany", new Intl.NumberFormat("de-DE", options).format(a));
+// console.log("Germany", new Intl.NumberFormat("de-DE", options).format(a));
 
-console.log("Syria", new Intl.NumberFormat("ar-SY", options).format(a));
+// console.log("Syria", new Intl.NumberFormat("ar-SY", options).format(a));
 
 //////////////////////////////////////////////////////////////////////////
 

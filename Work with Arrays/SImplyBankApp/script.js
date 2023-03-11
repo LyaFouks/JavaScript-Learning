@@ -416,7 +416,7 @@ btnClose.addEventListener("click", function (e) {
 
 /////////////////////////////////////////////////////////////////////////
 
-// Loan Request (some() sMethod)
+// Loan Request (some() Method)
 
 btnLoan.addEventListener("click", function (e) {
 	e.preventDefault();
@@ -427,9 +427,11 @@ btnLoan.addEventListener("click", function (e) {
 			(trans) => trans >= (loanAmount * 10) / 100
 		)
 	) {
-		currentAccount.transactions.push(loanAmount);
-		currentAccount.transactionsDates.push(new Date().toISOString());
-		updateUI(currentAccount);
+		setTimeout(function () {
+			currentAccount.transactions.push(loanAmount);
+			currentAccount.transactionsDates.push(new Date().toISOString());
+			updateUI(currentAccount);
+		}, 5000);
 	}
 	inputLoanAmount.value = "";
 });
