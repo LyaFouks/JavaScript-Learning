@@ -290,13 +290,43 @@ const updateUI = function (account) {
 	displayTotal(account);
 };
 
-let currentAccount;
+let currentAccount, currentLogOutTimer;
 
-// Always Logged In
+// // Always Logged In
 
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
+
+///////////////////////////////////////////////////////////////////////////
+
+// Timer Implementation
+
+const startLogOutTimer = function () {
+	const logOutTimerCallback = function () {
+		const minutes = String(Math.trunc(time / 60)).padStart(2, "0");
+		const seconds = String(Math.trunc(time % 60)).padStart(2, "0");
+		// In every call show ramaining time in UI
+		labelTimer.textContent = `${minutes}:${seconds}`;
+		// Stop the timer after the time has elapsed and exit the application
+		if (time === 0) {
+			clearInterval(logOutTimer);
+			containerApp.style.opacity = 0;
+
+			labelWelcome.textContent = "Войдите в свой аккаунт";
+		}
+		time--;
+	};
+
+	// Set time log out after 5 minutes
+	let time = 300;
+
+	// Call timer every second
+	logOutTimerCallback();
+	const logOutTimer = setInterval(logOutTimerCallback, 1000);
+	return logOutTimer;
+};
+///////////////////////////////////////////////////////////////////////////
 
 // const now = new Date();
 // const options = {
@@ -355,6 +385,10 @@ btnLogin.addEventListener("click", function (e) {
 		inputLoginPin.value = "";
 		inputLoginPin.blur();
 
+		// Check if the timer exists
+		if (currentLogOutTimer) clearInterval(currentLogOutTimer);
+		currentLogOutTimer = startLogOutTimer();
+
 		updateUI(currentAccount);
 	}
 });
@@ -388,6 +422,10 @@ btnTransfer.addEventListener("click", function (e) {
 		recipientAccount.transactionsDates.push(new Date().toISOString());
 
 		updateUI(currentAccount);
+
+		// Reset the timer
+		clearInterval(currentLogOutTimer);
+		currentLogOutTimer = startLogOutTimer();
 	}
 });
 
@@ -434,6 +472,10 @@ btnLoan.addEventListener("click", function (e) {
 		}, 5000);
 	}
 	inputLoanAmount.value = "";
+
+	// Reset the timer
+	clearInterval(currentLogOutTimer);
+	currentLogOutTimer = startLogOutTimer();
 });
 
 /////////////////////////////////////////////////////////////////////////
