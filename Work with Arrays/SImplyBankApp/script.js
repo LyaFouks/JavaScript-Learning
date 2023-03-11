@@ -123,7 +123,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 // Display Date
 
-const formatTransactionDate = function (date) {
+const formatTransactionDate = function (date, locale) {
 	const getDaysBetween2Dates = (date1, date2) =>
 		Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
 
@@ -134,11 +134,12 @@ const formatTransactionDate = function (date) {
 	if (daysPassed === 1) return "Yesterday";
 	if (daysPassed <= 7) return `${daysPassed} days ago`;
 	else {
-		const day = `${date.getDate()}`.padStart(2, "0");
-		const month = `${date.getMonth() + 1}`.padStart(2, "0");
-		const year = date.getFullYear();
+		// const day = `${date.getDate()}`.padStart(2, "0");
+		// const month = `${date.getMonth() + 1}`.padStart(2, "0");
+		// const year = date.getFullYear();
 
-		return `${day}/${month}/${year}`;
+		// return `${day}/${month}/${year}`;
+		return new Intl.DateTimeFormat(locale).format(date);
 	}
 };
 ///////////////////////////////////////////////////////////////////////////
@@ -157,7 +158,7 @@ const displayTransactions = function (account, sort = false) {
 
 		const date = new Date(account.transactionsDates[index]);
 
-		const transDate = formatTransactionDate(date);
+		const transDate = formatTransactionDate(date, account.locale);
 
 		const transactionRow = `
     <div class="transactions__row">
@@ -257,9 +258,21 @@ let currentAccount;
 
 // Always Logged In
 
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+// const now = new Date();
+// const options = {
+// 	hour: "numeric",
+// 	minute: "numeric",
+// 	day: "numeric",
+// 	month: "long",
+// 	year: "numeric",
+// 	weekday: "long",
+// };
+// const locale = navigator.language;
+// labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 
 // Event Handlers
 
@@ -279,12 +292,27 @@ btnLogin.addEventListener("click", function (e) {
 			currentAccount.userName.split(" ")[0]
 		}!`;
 
-		const now = new Date();
-		const day = `${now.getDate()}`.padStart(2, "0");
-		const month = `${now.getMonth() + 1}`.padStart(2, "0");
-		const year = now.getFullYear();
+		// const now = new Date();
+		// const day = `${now.getDate()}`.padStart(2, "0");
+		// const month = `${now.getMonth() + 1}`.padStart(2, "0");
+		// const year = now.getFullYear();
 
-		labelDate.textContent = `${day}/${month}/${year}`;
+		// labelDate.textContent = `${day}/${month}/${year}`;
+
+		const now = new Date();
+		const options = {
+			hour: "numeric",
+			minute: "numeric",
+			day: "numeric",
+			month: "long",
+			year: "numeric",
+			weekday: "long",
+		};
+		const locale = navigator.language;
+		labelDate.textContent = new Intl.DateTimeFormat(
+			currentAccount.locale,
+			options
+		).format(now);
 
 		// Clear inputs
 		inputLoginUsername.value = "";
