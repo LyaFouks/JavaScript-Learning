@@ -81,3 +81,52 @@ document
 		message.remove();
 		// message.parentElement.removeChild(message);
 	});
+
+/////////////////////////////////////////////////////
+
+// Styles, Attributes, Classes
+
+// Styles
+message.style.backgroundColor = "#076785";
+message.style.width = "120%";
+console.log(message.style.width);
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message));
+console.log(getComputedStyle(message).height);
+message.style.height =
+	Number.parseFloat(getComputedStyle(message).height) + 50 + "px";
+console.log(getComputedStyle(message).height);
+
+document.documentElement.style.setProperty("--color-first", "yellow");
+
+// Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.getAttribute("src"));
+console.log(logo.className);
+
+logo.alt = "Лого Прекрасного Банка";
+
+// Non-standard attributes
+console.log(logo.developer);
+console.log(logo.getAttribute("developer"));
+logo.setAttribute("copyright", "MOS");
+
+const link = document.querySelector(".nav__link--btn");
+console.log(link.href);
+console.log(link.getAttribute("href"));
+
+// Data attributes
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add("a", "b");
+logo.classList.remove("a", "b");
+logo.classList.toggle("a");
+logo.classList.contains("c");
+
+// Don't use
+// logo.className = "a";
