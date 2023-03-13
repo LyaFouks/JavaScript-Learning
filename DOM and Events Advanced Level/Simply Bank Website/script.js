@@ -169,3 +169,25 @@ btnScrollTo.addEventListener("click", function (e) {
 	// Approach only for new browsers
 	section1.scrollIntoView({ behavior: "smooth" });
 });
+
+///////////////////////////////////////////////////////////////////////////
+
+// Event Types and Event Handler
+
+const h1 = document.querySelector("h1");
+// const alertMouseEnterH1 = function (e) {
+// 	alert("addEventListener: Yoa are now at the h1 element.");
+// 	h1.removeEventListener("mouseenter", alertMouseEnterH1);
+// };
+
+const alertMouseEnterH1 = function (e) {
+	alert("addEventListener: Yoa are now at the h1 element.");
+};
+h1.addEventListener("mouseenter", alertMouseEnterH1);
+
+setTimeout(() => h1.removeEventListener("mouseenter", alertMouseEnterH1), 3000);
+
+// Old approach. Replaces previous handlers
+// h1.onclick = function (e) {
+// 	alert("onClickr: You have clicked the h1 element.");
+// };
