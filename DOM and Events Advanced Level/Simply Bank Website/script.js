@@ -276,6 +276,34 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 ///////////////////////////////////////////////////////////////////////////
 
+// DOM Traversing
+
+const h1 = document.querySelector("h1");
+
+// Moving down (to child)
+console.log(h1.querySelectorAll(".highlight"));
+console.log(h1.childNodes);
+console.log(h1.children);
+console.log(h1.firstElementChild);
+h1.firstElementChild.style.color = "yellow";
+console.log(h1.lastElementChild);
+
+// Moving up (to parents)
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+const h2 = document.querySelector("h2");
+
+h2.closest(".section").style.backgroundColor = "blue";
+h2.closest("h2").style.backgroundColor = "green";
+
+// Moving on the same level
+
+console.log(h2.previousElementSibling);
+console.log(h2.nextElementSibling);
+
+console.log(h1.parentElement.children);
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
