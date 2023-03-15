@@ -9,6 +9,8 @@ const btnCloseModalWindow = document.querySelector(".btn--close-modal-window");
 const btnsOpenModalWindow = document.querySelectorAll(
 	".btn--show-modal-window"
 );
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
 
 const openModalWindow = function (e) {
 	e.preventDefault();
@@ -37,6 +39,76 @@ document.addEventListener("keydown", function (e) {
 	}
 });
 
+///////////////////////////////////////////////////////////////////////////
+
+// Implementation of Smooth Scrolling
+
+btnScrollTo.addEventListener("click", function (e) {
+	e.preventDefault();
+	const section1Coords = section1.getBoundingClientRect();
+	// console.log(section1Coords);
+	// console.log(e.target.getBoundingClientRect());
+	// console.log(
+	// 	"Текущее прокручивание: x, y",
+	// 	window.pageXOffset,
+	// 	window.pageYOffset
+	// );
+	// console.log(
+	// 	"Ширина и высота viewport:",
+	// 	document.documentElement.clientWidth,
+	// 	document.documentElement.clientHeight
+	// );
+
+	// Approach for old browsers
+	// window.scrollTo(
+	// 	section1Coords.left + window.pageXOffset,
+	// 	section1Coords.top + window.pageYOffset
+	// );
+
+	// window.scrollTo({
+	// 	left: section1Coords.left + window.pageXOffset,
+	// 	top: section1Coords.top + window.pageYOffset,
+	// 	behavior: "smooth",
+	// });
+
+	// Approach only for new browsers
+	section1.scrollIntoView({ behavior: "smooth" });
+});
+
+///////////////////////////////////////////////////////////////////////////
+
+// Smooth page navigation
+
+// document.querySelectorAll(".nav__link").forEach(function (htmlElement) {
+// 	htmlElement.addEventListener("click", function (e) {
+// 		e.preventDefault();
+// 		const href = this.getAttribute("href");
+// 		console.log(href);
+// 		document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+// 	});
+// });
+
+// Event Delegation
+
+// 1. Adding event listener to COMMON parent.
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+	e.preventDefault();
+	// 2. Define target element
+	console.log(e.target);
+	if (e.target.classList.contains("nav__link")) {
+		const href = e.target.getAttribute("href");
+		console.log(href);
+		document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+	}
+});
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////***************************************************************************
+///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
 // // Select, Creation and Deletion of Elements
@@ -82,7 +154,7 @@ document.addEventListener("keydown", function (e) {
 // 		// message.parentElement.removeChild(message);
 // 	});
 
-// /////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 // // Styles, Attributes, Classes
 
@@ -133,45 +205,6 @@ document.addEventListener("keydown", function (e) {
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Implementation of Smooth Scrolling
-
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
-
-btnScrollTo.addEventListener("click", function (e) {
-	e.preventDefault();
-	const section1Coords = section1.getBoundingClientRect();
-	// console.log(section1Coords);
-	// console.log(e.target.getBoundingClientRect());
-	// console.log(
-	// 	"Текущее прокручивание: x, y",
-	// 	window.pageXOffset,
-	// 	window.pageYOffset
-	// );
-	// console.log(
-	// 	"Ширина и высота viewport:",
-	// 	document.documentElement.clientWidth,
-	// 	document.documentElement.clientHeight
-	// );
-
-	// Approach for old browsers
-	// window.scrollTo(
-	// 	section1Coords.left + window.pageXOffset,
-	// 	section1Coords.top + window.pageYOffset
-	// );
-
-	// window.scrollTo({
-	// 	left: section1Coords.left + window.pageXOffset,
-	// 	top: section1Coords.top + window.pageYOffset,
-	// 	behavior: "smooth",
-	// });
-
-	// Approach only for new browsers
-	section1.scrollIntoView({ behavior: "smooth" });
-});
-
-///////////////////////////////////////////////////////////////////////////
-
 // // Event Types and Event Handler
 
 // const h1 = document.querySelector("h1");
@@ -194,54 +227,55 @@ btnScrollTo.addEventListener("click", function (e) {
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Event Propagation
-// rgb(123, 56, 78)
+// // Event Propagation
+// // rgb(123, 56, 78)
 
-function getRandomIntInclusive(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1) + min);
-}
+// function getRandomIntInclusive(min, max) {
+// 	min = Math.ceil(min);
+// 	max = Math.floor(max);
+// 	return Math.floor(Math.random() * (max - min + 1) + min);
+// }
 
-const getRandomColor = () =>
-	`rgb(
-    ${getRandomIntInclusive(0, 255)}, 
-    ${getRandomIntInclusive(0, 255)}, 
-    ${getRandomIntInclusive(0, 255)})`;
+// const getRandomColor = () =>
+// 	`rgb(
+//     ${getRandomIntInclusive(0, 255)},
+//     ${getRandomIntInclusive(0, 255)},
+//     ${getRandomIntInclusive(0, 255)})`;
 
-console.log(getRandomColor());
+// console.log(getRandomColor());
 
-document.querySelector(".nav__link").addEventListener("click", function (e) {
-	this.style.backgroundColor = getRandomColor();
-	console.log("Link", e.target, e.currentTarget);
-	console.log(this === e.currentTarget);
-	// Stop propagation
-	// e.stopPropagation();
-});
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+// 	this.style.backgroundColor = getRandomColor();
+// 	console.log("Link", e.target, e.currentTarget);
+// 	console.log(this === e.currentTarget);
+// 	// Stop propagation
+// 	// e.stopPropagation();
+// });
 
-document.querySelector(".nav__links").addEventListener("click", function (e) {
-	this.style.backgroundColor = getRandomColor();
-	console.log("Links", e.target, e.currentTarget);
-	console.log(this === e.currentTarget);
-});
+// document.querySelector(".nav__links").addEventListener("click", function (e) {
+// 	this.style.backgroundColor = getRandomColor();
+// 	console.log("Links", e.target, e.currentTarget);
+// 	console.log(this === e.currentTarget);
+// });
 
-document.querySelector(".nav").addEventListener(
-	"click",
-	function (e) {
-		this.style.backgroundColor = getRandomColor();
-		console.log("Nav", e.target, e.currentTarget);
-		console.log(this === e.currentTarget);
-	}
-	// , true
-);
+// document.querySelector(".nav").addEventListener(
+// 	"click",
+// 	function (e) {
+// 		this.style.backgroundColor = getRandomColor();
+// 		console.log("Nav", e.target, e.currentTarget);
+// 		console.log(this === e.currentTarget);
+// 	}
+// 	// , true
+// );
 
-document.querySelector("body").addEventListener("click", function (e) {
-	this.style.backgroundColor = getRandomColor();
-	console.log("Body", e.target, e.currentTarget);
-	console.log(this === e.currentTarget);
-});
+// document.querySelector("body").addEventListener("click", function (e) {
+// 	this.style.backgroundColor = getRandomColor();
+// 	console.log("Body", e.target, e.currentTarget);
+// 	console.log(this === e.currentTarget);
+// });
 
 ///////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
