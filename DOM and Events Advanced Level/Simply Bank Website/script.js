@@ -9,8 +9,15 @@ const btnCloseModalWindow = document.querySelector(".btn--close-modal-window");
 const btnsOpenModalWindow = document.querySelectorAll(
 	".btn--show-modal-window"
 );
+
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
+
+const tabs = document.querySelectorAll(".operations__tab");
+const tabContainer = document.querySelector(".operations__tab-container");
+const tabContents = document.querySelectorAll(".operations__content");
+
+const nav = document.querySelector(".nav");
 
 const openModalWindow = function (e) {
 	e.preventDefault();
@@ -106,10 +113,6 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 // Tab Creation. DOM Traversing
 
-const tabs = document.querySelectorAll(".operations__tab");
-const tabContainer = document.querySelector(".operations__tab-container");
-const tabContents = document.querySelectorAll(".operations__content");
-
 tabContainer.addEventListener("click", function (e) {
 	const clickedButton = e.target.closest(".operations__tab");
 
@@ -130,6 +133,30 @@ tabContainer.addEventListener("click", function (e) {
 });
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Fade Animation on Navigation Bar. Passing Arguments to Event Handlers
+
+const navLinksHoverAnimation = function (e) {
+	if (e.target.classList.contains("nav__link")) {
+		const linkOver = e.target;
+		const siblingLinks = linkOver
+			.closest(".nav__links")
+			.querySelectorAll(".nav__link");
+		const logo = linkOver.closest(".nav").querySelector("img");
+		const logoText = linkOver.closest(".nav").querySelector(".nav__text");
+		siblingLinks.forEach((el) => {
+			if (el !== linkOver) el.style.opacity = this;
+		});
+		logo.style.opacity = this;
+		logoText.style.opacity = this;
+	}
+};
+
+// Work with Arguments with bind() Method / this
+
+nav.addEventListener("mouseover", navLinksHoverAnimation.bind(0.4));
+
+nav.addEventListener("mouseout", navLinksHoverAnimation.bind(1));
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
