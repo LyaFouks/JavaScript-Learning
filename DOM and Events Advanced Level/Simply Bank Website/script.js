@@ -220,7 +220,7 @@ const allSections = document.querySelectorAll(".section");
 
 const appearanceSetion = function (entries, observer) {
 	const entry = entries[0];
-	console.log(entry);
+	// console.log(entry);
 	if (!entry.isIntersecting) return;
 
 	entry.target.classList.remove("section--hidden");
@@ -238,6 +238,33 @@ allSections.forEach(function (section) {
 });
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Lazy Loading for Images
+
+const lazyImages = document.querySelectorAll("img[data-src]");
+
+const loadImages = function (entries, observer) {
+	const entry = entries[0];
+	console.log(entry);
+
+	if (!entry.isIntersecting) return;
+
+	// Changing to high quality image
+	entry.target.src = entry.target.dataset.src;
+	// entry.target.classList.remove("lazy-img");
+
+	entry.target.addEventListener("load", function () {
+		entry.target.classList.remove("lazy-img");
+	});
+	observer.unobserve(entry.target);
+};
+
+const lazyImagesObserver = new IntersectionObserver(loadImages, {
+	root: null,
+	threshold: 0.7,
+});
+lazyImages.forEach((image) => lazyImagesObserver.observe(image));
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
