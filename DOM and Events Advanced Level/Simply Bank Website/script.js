@@ -551,21 +551,21 @@ dotContainer.addEventListener("click", function (e) {
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Lifecycle DOM Events
+// // Lifecycle DOM Events
 
-document.addEventListener("DOMContentLoaded", function (e) {
-	console.log("Дерево DOM создано", e);
-});
-
-window.addEventListener("load", function (e) {
-	console.log("Страница полностью загружена", e);
-});
-
-// window.addEventListener("beforeunload", function (e) {
-// 	e.preventDefault();
-// 	console.log(e);
-// 	e.returnValue = "";
+// document.addEventListener("DOMContentLoaded", function (e) {
+// 	console.log("Дерево DOM создано", e);
 // });
+
+// window.addEventListener("load", function (e) {
+// 	console.log("Страница полностью загружена", e);
+// });
+
+// // window.addEventListener("beforeunload", function (e) {
+// // 	e.preventDefault();
+// // 	console.log(e);
+// // 	e.returnValue = "";
+// // });
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
