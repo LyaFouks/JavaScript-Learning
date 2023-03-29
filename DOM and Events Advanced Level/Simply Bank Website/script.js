@@ -245,7 +245,7 @@ const lazyImages = document.querySelectorAll("img[data-src]");
 
 const loadImages = function (entries, observer) {
 	const entry = entries[0];
-	console.log(entry);
+	// console.log(entry);
 
 	if (!entry.isIntersecting) return;
 
@@ -550,6 +550,23 @@ dotContainer.addEventListener("click", function (e) {
 // console.log(h1.parentElement.children);
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Lifecycle DOM Events
+
+document.addEventListener("DOMContentLoaded", function (e) {
+	console.log("Дерево DOM создано", e);
+});
+
+window.addEventListener("load", function (e) {
+	console.log("Страница полностью загружена", e);
+});
+
+// window.addEventListener("beforeunload", function (e) {
+// 	e.preventDefault();
+// 	console.log(e);
+// 	e.returnValue = "";
+// });
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
