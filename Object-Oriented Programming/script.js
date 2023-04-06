@@ -134,39 +134,102 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Setters & Getters
+// // Setters & Getters
+
+// // const account = {
+// // 	owner: "Nikita",
+// // 	transactions: [300, 500, -200, 1000],
+
+// // 	lastTransaction() {
+// // 		return this.transactions.slice(-1).pop();
+// // 	},
+// // };
+
+// // console.log(account.lastTransaction());
 
 // const account = {
 // 	owner: "Nikita",
 // 	transactions: [300, 500, -200, 1000],
 
-// 	lastTransaction() {
+// 	get lastTransaction() {
 // 		return this.transactions.slice(-1).pop();
+// 	},
+
+// 	set lastTransaction(trans) {
+// 		this.transactions.push(trans);
 // 	},
 // };
 
-// console.log(account.lastTransaction());
+// console.log(account.lastTransaction);
+// account.lastTransaction = 100;
+// console.log(account.transactions);
 
-const account = {
-	owner: "Nikita",
-	transactions: [300, 500, -200, 1000],
+// class Person {
+// 	constructor(fullName, birthYear) {
+// 		this.fullName = fullName;
+// 		this.birthYear = birthYear;
+// 	}
 
-	get lastTransaction() {
-		return this.transactions.slice(-1).pop();
-	},
+// 	// Методы добавляются в свойство .prototype
+// 	printAge() {
+// 		console.log(2023 - this.birthYear);
+// 	}
 
-	set lastTransaction(trans) {
-		this.transactions.push(trans);
-	},
-};
+// 	greet() {
+// 		console.log(`Hello! My name is ${this.fulltName}`);
+// 	}
 
-console.log(account.lastTransaction);
-account.lastTransaction = 100;
-console.log(account.transactions);
+// 	get age() {
+// 		return 2023 - this.birthYear;
+// 	}
+
+// 	// Установить значение в уже существующее свойсвто
+// 	set fullName(name) {
+// 		console.log(name);
+// 		if (name.includes(" ")) {
+// 			this._fullName = name;
+// 		} else {
+// 			alert("Full name have to includes name and last name");
+// 		}
+// 	}
+
+// 	get fullName() {
+// 		return this._fullName;
+// 	}
+// }
+
+// const jack = new Person("Jack White", 2000);
+// console.log(jack);
+
+// const jane = new Person("Jane Red", 2002);
+// console.log(jane);
+
+///////////////////////////////////////////////////////////////////////////
+
+// Static Methods
+
+// const Person = function (firstName, birthYear) {
+// 	// Instance properties - свойство экземпляра
+// 	this.firstName = firstName;
+// 	this.birthYear = birthYear;
+
+// 	// // Never do it!!!
+// 	// this.printAge = function () {
+// 	// 	console.log(2023 - this.birthYear);
+// 	// };
+// };
+
+// Person.highFive = function () {
+// 	console.log("High Five!");
+// };
+
+// Person.prototype.highFive = function () {
+// 	console.log("High Five!");
+// };
 
 class Person {
-	constructor(fullName, birthYear) {
-		this.fullName = fullName;
+	constructor(firstName, birthYear) {
+		this.firstName = firstName;
 		this.birthYear = birthYear;
 	}
 
@@ -176,35 +239,20 @@ class Person {
 	}
 
 	greet() {
-		console.log(`Hello! My name is ${this.fulltName}`);
+		console.log(`Hello! My name is ${this.firstName}`);
 	}
 
-	get age() {
-		return 2023 - this.birthYear;
-	}
-
-	// Установить значение в уже существующее свойсвто
-	set fullName(name) {
-		console.log(name);
-		if (name.includes(" ")) {
-			this._fullName = name;
-		} else {
-			alert("Full name have to includes name and last name");
-		}
-	}
-
-	get fullName() {
-		return this._fullName;
+	// Статический метод
+	static highFive() {
+		console.log("High Five!");
 	}
 }
 
-const jack = new Person("Jack White", 2000);
-console.log(jack);
+Person.highFive();
 
-const jane = new Person("Jane Red", 2002);
-console.log(jane);
+const jack = new Person("Jack", 1992);
 
-///////////////////////////////////////////////////////////////////////////
+// jack.highFive();
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
