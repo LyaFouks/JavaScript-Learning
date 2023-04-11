@@ -256,34 +256,74 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Object.create()
+// // Object.create()
 
-const PersonProto = {
-	printAge() {
-		console.log(2023 - this.birthYear);
-	},
+// const PersonProto = {
+// 	printAge() {
+// 		console.log(2023 - this.birthYear);
+// 	},
 
-	initPerson(firstName, birthYear) {
-		this.firstName = firstName;
-		this.birthYear = birthYear;
-	},
-};
+// 	initPerson(firstName, birthYear) {
+// 		this.firstName = firstName;
+// 		this.birthYear = birthYear;
+// 	},
+// };
 
-const jack = Object.create(PersonProto);
-console.log(jack);
+// const jack = Object.create(PersonProto);
+// console.log(jack);
 
-jack.name = "Jack";
-jack.birthYear = 2000;
+// jack.name = "Jack";
+// jack.birthYear = 2000;
 
-jack.printAge();
+// jack.printAge();
 
-console.log(Object.getPrototypeOf(jack) === PersonProto);
+// console.log(Object.getPrototypeOf(jack) === PersonProto);
 
-const jane = Object.create(PersonProto);
-jane.initPerson("Jane", 2002);
-jane.printAge();
+// const jane = Object.create(PersonProto);
+// jane.initPerson("Jane", 2002);
+// jane.printAge();
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Inheritance of "Classes". Constructor Functions
+
+const Person = function (firstName, birthYear) {
+	this.firstName = firstName;
+	this.birthYear = birthYear;
+};
+
+Person.prototype.printAge = function () {
+	console.log(2023 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, dept) {
+	Person.call(this, firstName, birthYear);
+	this.dept = dept;
+};
+
+// Связываем прототипы
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+	console.log(
+		`My name is ${this.firstName} and I study at the "${this.dept}" department`
+	);
+};
+
+const jack = new Student("Jack", 2000, "Programming");
+console.log(jack);
+jack.introduce();
+jack.printAge();
+
+console.log(jack.__proto__);
+console.log(Object.getPrototypeOf(jack));
+
+console.log(jack instanceof Student);
+console.log(jack instanceof Person);
+console.log(jack instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
