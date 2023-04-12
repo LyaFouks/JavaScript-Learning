@@ -285,45 +285,110 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-// Inheritance of "Classes". Constructor Functions
+// // Inheritance of "Classes". Constructor Functions
 
-const Person = function (firstName, birthYear) {
-	this.firstName = firstName;
-	this.birthYear = birthYear;
-};
+// const Person = function (firstName, birthYear) {
+// 	this.firstName = firstName;
+// 	this.birthYear = birthYear;
+// };
 
-Person.prototype.printAge = function () {
-	console.log(2023 - this.birthYear);
-};
+// Person.prototype.printAge = function () {
+// 	console.log(2023 - this.birthYear);
+// };
 
-const Student = function (firstName, birthYear, dept) {
-	Person.call(this, firstName, birthYear);
-	this.dept = dept;
-};
+// const Student = function (firstName, birthYear, dept) {
+// 	Person.call(this, firstName, birthYear);
+// 	this.dept = dept;
+// };
 
-// Связываем прототипы
-Student.prototype = Object.create(Person.prototype);
+// // Связываем прототипы
+// Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.introduce = function () {
-	console.log(
-		`My name is ${this.firstName} and I study at the "${this.dept}" department`
-	);
-};
+// Student.prototype.introduce = function () {
+// 	console.log(
+// 		`My name is ${this.firstName} and I study at the "${this.dept}" department`
+// 	);
+// };
 
-const jack = new Student("Jack", 2000, "Programming");
+// const jack = new Student("Jack", 2000, "Programming");
+// console.log(jack);
+// jack.introduce();
+// jack.printAge();
+
+// console.log(jack.__proto__);
+// console.log(Object.getPrototypeOf(jack));
+
+// console.log(jack instanceof Student);
+// console.log(jack instanceof Person);
+// console.log(jack instanceof Object);
+
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
+///////////////////////////////////////////////////////////////////////////
+
+// Inheritance of "Classes". ES6 Classes
+
+class Person {
+	constructor(fullName, birthYear) {
+		this.fullName = fullName;
+		this.birthYear = birthYear;
+	}
+
+	// Методы добавляются в свойство .prototype
+	printAge() {
+		console.log(2023 - this.birthYear);
+	}
+
+	greet() {
+		console.log(`Hello! My name is ${this.fullName}`);
+	}
+
+	get age() {
+		return 2023 - this.birthYear;
+	}
+
+	// Установить значение в уже существующее свойство
+	set fullName(name) {
+		console.log(name);
+		if (name.includes(" ")) {
+			this._fullName = name;
+		} else {
+			alert("Full name have to includes name and last name");
+		}
+	}
+
+	get fullName() {
+		return this._fullName;
+	}
+
+	static highFive() {
+		console.log("High Five!");
+	}
+}
+
+class Student extends Person {
+	constructor(fullName, birthYear, dept) {
+		// Обязательно записать в самом начале!
+		super(fullName, birthYear);
+		this.dept = dept;
+	}
+
+	introduce() {
+		console.log(
+			`My name is ${this.fullName} and I study at the "${this.dept}" department`
+		);
+	}
+
+	greet() {
+		console.log(`Привет! Меня зовут ${this.fullName} и я студент!`);
+	}
+}
+
+const jack = new Student("Jack White", 2001, "Programming");
 console.log(jack);
+
 jack.introduce();
 jack.printAge();
-
-console.log(jack.__proto__);
-console.log(Object.getPrototypeOf(jack));
-
-console.log(jack instanceof Student);
-console.log(jack instanceof Person);
-console.log(jack instanceof Object);
-
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
-///////////////////////////////////////////////////////////////////////////
+jack.greet();
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
