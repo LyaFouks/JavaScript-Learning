@@ -392,34 +392,86 @@
 // jack.greet();
 ///////////////////////////////////////////////////////////////////////////
 
-// Inheritance of "Classes". Object.create()
+// // Inheritance of "Classes". Object.create()
 
-const PersonProto = {
-	printAge() {
-		console.log(2023 - this.birthYear);
-	},
+// const PersonProto = {
+// 	printAge() {
+// 		console.log(2023 - this.birthYear);
+// 	},
 
-	initPerson(firstName, birthYear) {
-		this.firstName = firstName;
-		this.birthYear = birthYear;
-	},
-};
+// 	initPerson(firstName, birthYear) {
+// 		this.firstName = firstName;
+// 		this.birthYear = birthYear;
+// 	},
+// };
 
-const StudentProto = Object.create(PersonProto);
-StudentProto.initStudent = function (firstName, birthYear, dept) {
-	PersonProto.initPerson.call(this, firstName, birthYear);
-	this.dept = dept;
-};
+// const StudentProto = Object.create(PersonProto);
+// StudentProto.initStudent = function (firstName, birthYear, dept) {
+// 	PersonProto.initPerson.call(this, firstName, birthYear);
+// 	this.dept = dept;
+// };
 
-StudentProto.introduce = function () {
-	console.log(
-		`My name is ${this.firstName} and I study at the "${this.dept}" department`
-	);
-};
+// StudentProto.introduce = function () {
+// 	console.log(
+// 		`My name is ${this.firstName} and I study at the "${this.dept}" department`
+// 	);
+// };
 
-const jack = Object.create(StudentProto);
-jack.initStudent("Jack", 2003, "Programming");
-jack.introduce();
-jack.printAge();
+// const jack = Object.create(StudentProto);
+// jack.initStudent("Jack", 2003, "Programming");
+// jack.introduce();
+// jack.printAge();
 
+///////////////////////////////////////////////////////////////////////////
+
+// Another Class Example
+
+class Account {
+	constructor(owner, currency, pin) {
+		this.owner = owner;
+		this.currency = currency;
+		this.pin = pin;
+		this.transactions = [];
+		this.local = navigator.language;
+
+		console.log(`Спасибо, что открыли счет в нашем банке, ${owner}!`);
+	}
+
+	// Public interface - API
+	deposit(value) {
+		this.transactions.push(value);
+	}
+
+	withdraw(value) {
+		// this.transactions.push(-value);
+		this.deposit(-value);
+	}
+
+	approveLoan(value) {
+		return true;
+	}
+
+	requestLoan(value) {
+		if (this.approveLoan(value)) {
+			this.deposit(value);
+			console.log(`Займ утвержден!`);
+		}
+	}
+}
+
+const account1 = new Account("Jack", "USD", 1111);
+
+// account1.transactions.push(500);
+// account1.transactions.push(-100);
+
+account1.deposit(500);
+account1.withdraw(100);
+account1.requestLoan(10000);
+account1.approveLoan(10000);
+
+console.log(account1);
+console.log(account1.pin);
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
